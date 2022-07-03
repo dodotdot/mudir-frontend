@@ -44,7 +44,7 @@ Used to collect a Token for a registered User.
 
 * token can also set into httponly cookie
 
-```json
+```
 set-cookie: token=93144b288eb1fdccbe46d6fc0f241a51766ecd3d; Max-Age=86400; Path=/; Expires=Mon, 04 Jul 2022 12:42:05 GMT; HttpOnly
 ```
 
