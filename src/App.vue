@@ -10,7 +10,7 @@ setInterval(() => {
 
 <template>
   <div>
-    <header class="bg-white shadow" v-if="$route.meta.title">
+    <header class="shadow" v-if="$route.meta.title && false" >
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <h1
           @click="counter = 0"
