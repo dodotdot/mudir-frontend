@@ -13,6 +13,7 @@
     "name": "[plain text, subject name]",
     "book": "[plain text, book name]",
     "author": "[plain text, book author]",
+    "subjectType": "[PELAJARAN, KAJIAN]",
     "duration": "[duration in hour]"
 }
 ```
@@ -24,6 +25,7 @@
   "name": "AQIDAH",
   "book": "Utsul Tsalatsah",
   "author": "Syaikh XXX",
+  "subjectType": "KAJIAN",
   "duration": "4"
 }
 ```
@@ -80,6 +82,7 @@
       "name": "AQIDAH AKHLAK",
       "book": "Utsul Tsalatsah",
       "author": "Syaikh XXX",
+      "subjectType": "KAJIAN",
       "duration": "4"
     },
     {
@@ -87,6 +90,7 @@
       "name": "FIQIH",
       "book": "FIQIH KONTEMPORER",
       "author": "Syaikh XXX",
+      "subjectType": "PELAJARAN",
       "duration": "4"
     }
   ]
@@ -123,6 +127,65 @@
   ]
 }
 ```
+
+# GET SUBJECT BY TYPE
+
+**URL** : `/api/subjects/type/{subjectType}`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": [
+    {
+      "id" : "akdn221nkjqndjknue",
+      "name": "FIQIH",
+      "book": "FIQIH KONTEMPORER",
+      "author": "Syaikh XXX",
+      "subjectType": "PELAJARAN",
+      "duration": "4"
+    }
+  ]
+}
+```
+
+# COUNT SUBJECT 
+
+**URL** : `/api/subjects/count`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": {
+      "PELAJARAN": 20,
+      "KAJIAN": 30
+    }
+}
+```
+
 # UPDATE USER
 
 **URL** : `/api/subjects/{subjectId}`

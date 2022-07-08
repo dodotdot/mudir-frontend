@@ -141,6 +141,82 @@
 }
 ```
 
+# GET ALL USER BY TYPE
+
+**URL** : `/api/users/type/{userType}`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": [
+    {
+      "id" : "adnqwrqw2891enjw",
+      "name": "[user name]",
+      "email": "[valid email address]",
+      "password": "[password in plain text, can be empty if user type is STUDENT]",
+      "guardian": "[parents or wali name, must be filled if type is STUDENT]",
+      "userPhone": "[plain text]",
+      "guardianPhone": "[plain text], must be filled if type is STUDENT",
+      "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
+      "city": "[plain text, must be filled if type is STUDENT]",
+      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "lastEducation": "[must be filled if type is TEACHER]"
+    },
+    {
+      "id" : "asdqwjeje12jne2j1nj",
+      "name": "[user name]",
+      "email": "[valid email address]",
+      "password": "[password in plain text, can be empty if user type is STUDENT]",
+      "guardian": "[parents or wali name, must be filled if type is STUDENT]",
+      "userPhone": "[plain text]",
+      "guardianPhone": "[plain text], must be filled if type is STUDENT",
+      "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
+      "city": "[plain text, must be filled if type is STUDENT]",
+      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "lastEducation": "[must be filled if type is TEACHER]"
+    }
+  ]
+}
+```
+
+# COUNT ALL USER BY TYPE
+
+**URL** : `/api/users/count`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": {
+      "STUDENT": 20,
+      "TEACHER": 40
+    }
+}
+```
+
 # GET USER BY ID
 
 **URL** : `/api/users/{userId}`
