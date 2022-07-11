@@ -12,7 +12,7 @@ setInterval(() => {
 <template>
   <div>
     <main>
-      <Header v-if="this.$route.path !== '/'"></Header>
+      <Header v-if="$route.path !== '/'"></Header>
       <router-view />
     </main>
   </div>
