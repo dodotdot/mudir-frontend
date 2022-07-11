@@ -1,4 +1,5 @@
 node_modules
+dist
 .vscode
 netlify.toml
 .DS_Store
