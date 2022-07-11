@@ -23,7 +23,7 @@ const enabled = ref(false)
         </div>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-white text-sm text-left text-gray-200 dark:text-gray-400">
+        <table class="w-full text-white text-sm text-left dark:text-gray-400">
             <thead class="text-xs uppercase dark:bg-gray-400 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -37,7 +37,7 @@ const enabled = ref(false)
             <tbody>
                 <tr class="bg-transparent border-b  dark:border-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Abdurohman
+                     <router-link to="/detail-student/1">   Fulan bin fulan </router-link>
                     </th>
                     <td class="px-6 py-4 text-right">
                         2
@@ -45,7 +45,7 @@ const enabled = ref(false)
                 </tr>
                 <tr class=" border-b  dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Mas Kus
+                        <router-link to="/detail-student/1"> Mas Kus </router-link>
                     </th>
                     <td class="px-6 py-4 text-right">
                         2

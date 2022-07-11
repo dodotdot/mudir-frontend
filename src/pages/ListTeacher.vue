@@ -22,19 +22,29 @@ const enabled = ref(false)
             <!-- <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
         </div>
     </div>
-    <div class="green-block w-full p-2 my-4">
-        <div class="flex w-full text-sm p-2">
-          <div class="w-3/4 text-left uppercase">Aqidah</div>
-          <div class="w-1/4  text-right text-xs">4 Jam</div>
-        </div>
-        <p class="text-xs p-2">Utsul Tsalasah karya Syeikh Muhammad bin Abdul Wahhab (Terjemahan)</p>
-    </div>
-     <div class="green-block w-full p-2 my-4">
-        <div class="flex w-full text-sm p-2">
-          <div class="w-3/4 text-left uppercase">Adab & Akhlak</div>
-          <div class="w-1/4  text-right text-xs">2 Jam</div>
-        </div>
-        <p class="text-xs p-2">Minhajul Muslim karya syeikh (Abu Bakr Jabir al-jazairy (Terjemahan)</p>
+     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-white text-sm text-left dark:text-gray-400">
+            <thead class="text-xs uppercase dark:bg-gray-400 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-transparent border-b  dark:border-gray-100">
+                    <td scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
+                        Abdurohman
+                    </td>
+                </tr>
+                <tr class=" border-b  dark:border-gray-700">
+                    <td scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
+                        Mas Kus
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
     </div>
   </div>
 </template>
