@@ -30,7 +30,7 @@
 ```json
 {
     "name": "Budi Santoso",
-    "birthDate": "29-12-1997",
+    "birthDate": "29-12-1997T00:00:00+00:00",
     "guardian": "Budi Waseso",
     "guardianPhone": "08129181921",
     "userPhone": "088819291929",
@@ -46,7 +46,7 @@
     "username": "budi.santoso@gmail.com",
     "password": "njkj12321adsas",
     "lastEducation": "S2 King Abdul Aziz",  
-    "birthDate": "29-12-1979",
+    "birthDate": "29-12-1997T00:00:00+00:00",
     "userPhone": "088819291929",
     "role": "TEACHER"
 }
