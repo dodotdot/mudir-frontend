@@ -13,7 +13,7 @@
     "name": "[plain text, subject name]",
     "book": "[plain text, book name]",
     "author": "[plain text, book author]",
-    "subjectType": "[PELAJARAN, KAJIAN]",
+    "type": "[PELAJARAN, KAJIAN]",
     "duration": "[duration in hour]"
 }
 ```
@@ -25,7 +25,7 @@
   "name": "AQIDAH",
   "book": "Utsul Tsalatsah",
   "author": "Syaikh XXX",
-  "subjectType": "KAJIAN",
+  "type": "KAJIAN",
   "duration": "4"
 }
 ```
@@ -82,7 +82,7 @@
       "name": "AQIDAH AKHLAK",
       "book": "Utsul Tsalatsah",
       "author": "Syaikh XXX",
-      "subjectType": "KAJIAN",
+      "type": "KAJIAN",
       "duration": "4"
     },
     {
@@ -90,7 +90,7 @@
       "name": "FIQIH",
       "book": "FIQIH KONTEMPORER",
       "author": "Syaikh XXX",
-      "subjectType": "PELAJARAN",
+      "type": "PELAJARAN",
       "duration": "4"
     }
   ]
@@ -130,7 +130,7 @@
 
 # GET SUBJECT BY TYPE
 
-**URL** : `/api/subjects/type/{subjectType}`
+**URL** : `/api/subjects/type/{type}`
 
 **Method** : `GET`
 
@@ -153,7 +153,39 @@
       "name": "FIQIH",
       "book": "FIQIH KONTEMPORER",
       "author": "Syaikh XXX",
-      "subjectType": "PELAJARAN",
+      "type": "PELAJARAN",
+      "duration": "4"
+    }
+  ]
+}
+```
+
+# GET SUBJECT BY NAME
+
+**URL** : `/api/subjects/name/{name}`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": [
+    {
+      "id" : "akdn221nkjqndjknue",
+      "name": "FIQIH",
+      "book": "FIQIH KONTEMPORER",
+      "author": "Syaikh XXX",
+      "type": "PELAJARAN",
       "duration": "4"
     }
   ]

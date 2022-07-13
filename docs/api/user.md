@@ -11,14 +11,15 @@
 ```json
 {
     "name": "[user name]",
-    "email": "[valid email address]",
+    "markForDelete": "[true if deleted, false otherwise]",
+    "username": "[valid username address]",
     "password": "[password in plain text, can be empty if user type is STUDENT]",
     "guardian": "[parents or wali name, must be filled if type is STUDENT]",
     "userPhone": "[plain text]",
     "guardianPhone": "[plain text], must be filled if type is STUDENT",
     "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
     "city": "[plain text, must be filled if type is STUDENT]",
-    "userType": "[TEACHER, STUDENT, ADMIN]",
+    "role": "[TEACHER, STUDENT, ADMIN]",
     "lastEducation": "[must be filled if type is TEACHER]"
   
 }
@@ -29,12 +30,12 @@
 ```json
 {
     "name": "Budi Santoso",
-    "birthDate": "29-12-1997",
+    "birthDate": "29-12-1997T00:00:00+00:00",
     "guardian": "Budi Waseso",
     "guardianPhone": "08129181921",
     "userPhone": "088819291929",
     "city": "Madiun",
-    "userType": "STUDENT"
+    "role": "STUDENT"
 }
 ```
 **Data example For Create New TEACHER**
@@ -42,12 +43,12 @@
 ```json
 {
     "name": "Budi Santoso",
-    "email": "budi.santoso@gmail.com",
+    "username": "budi.santoso@gmail.com",
     "password": "njkj12321adsas",
     "lastEducation": "S2 King Abdul Aziz",  
-    "birthDate": "29-12-1979",
+    "birthDate": "29-12-1997T00:00:00+00:00",
     "userPhone": "088819291929",
-    "userType": "TEACHER"
+    "role": "TEACHER"
 }
 ```
 
@@ -56,9 +57,9 @@
 ```json
 {
     "name": "Deddy Mustanto",
-    "email": "deddy.mustanto@gmail.com",
+    "username": "deddy.mustanto@gmail.com",
     "password": "njkj12321adsas",
-    "userType": "ADMIN"
+    "role": "ADMIN"
 }
 ```
 
@@ -114,36 +115,36 @@
     {
       "id" : "adnqwrqw2891enjw",
       "name": "[user name]",
-      "email": "[valid email address]",
+      "username": "[valid username address]",
       "password": "[password in plain text, can be empty if user type is STUDENT]",
       "guardian": "[parents or wali name, must be filled if type is STUDENT]",
       "userPhone": "[plain text]",
       "guardianPhone": "[plain text], must be filled if type is STUDENT",
       "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
       "city": "[plain text, must be filled if type is STUDENT]",
-      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
       "lastEducation": "[must be filled if type is TEACHER]"
     },
     {
       "id" : "asdqwjeje12jne2j1nj",
       "name": "[user name]",
-      "email": "[valid email address]",
+      "username": "[valid username address]",
       "password": "[password in plain text, can be empty if user type is STUDENT]",
       "guardian": "[parents or wali name, must be filled if type is STUDENT]",
       "userPhone": "[plain text]",
       "guardianPhone": "[plain text], must be filled if type is STUDENT",
       "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
       "city": "[plain text, must be filled if type is STUDENT]",
-      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
       "lastEducation": "[must be filled if type is TEACHER]"
     }
   ]
 }
 ```
 
-# GET ALL USER BY TYPE
+# GET ALL USER BY ROLE
 
-**URL** : `/api/users/type/{userType}`
+**URL** : `/api/users/role/{role}`
 
 **Method** : `GET`
 
@@ -164,27 +165,27 @@
     {
       "id" : "adnqwrqw2891enjw",
       "name": "[user name]",
-      "email": "[valid email address]",
+      "username": "[valid username address]",
       "password": "[password in plain text, can be empty if user type is STUDENT]",
       "guardian": "[parents or wali name, must be filled if type is STUDENT]",
       "userPhone": "[plain text]",
       "guardianPhone": "[plain text], must be filled if type is STUDENT",
       "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
       "city": "[plain text, must be filled if type is STUDENT]",
-      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
       "lastEducation": "[must be filled if type is TEACHER]"
     },
     {
       "id" : "asdqwjeje12jne2j1nj",
       "name": "[user name]",
-      "email": "[valid email address]",
+      "username": "[valid username address]",
       "password": "[password in plain text, can be empty if user type is STUDENT]",
       "guardian": "[parents or wali name, must be filled if type is STUDENT]",
       "userPhone": "[plain text]",
       "guardianPhone": "[plain text], must be filled if type is STUDENT",
       "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
       "city": "[plain text, must be filled if type is STUDENT]",
-      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
       "lastEducation": "[must be filled if type is TEACHER]"
     }
   ]
@@ -240,19 +241,57 @@
     {
       "id" : "asdnasdqwjenkjnk2enk",
       "name": "[user name]",
-      "email": "[valid email address]",
+      "username": "[valid username address]",
       "password": "[password in plain text, can be empty if user type is STUDENT]",
       "guardian": "[parents or wali name, must be filled if type is STUDENT]",
       "userPhone": "[plain text]",
       "guardianPhone": "[plain text], must be filled if type is STUDENT",
       "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
       "city": "[plain text, must be filled if type is STUDENT]",
-      "userType": "[TEACHER, STUDENT, ADMIN]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
       "lastEducation": "[must be filled if type is TEACHER]"
     }
   ]
 }
 ```
+
+# GET USER BY name
+
+**URL** : `/api/users/name/{name}`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": [
+    {
+      "id" : "asdnasdqwjenkjnk2enk",
+      "name": "[user name]",
+      "username": "[valid username address]",
+      "password": "[password in plain text, can be empty if user type is STUDENT]",
+      "guardian": "[parents or wali name, must be filled if type is STUDENT]",
+      "userPhone": "[plain text]",
+      "guardianPhone": "[plain text], must be filled if type is STUDENT",
+      "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
+      "city": "[plain text, must be filled if type is STUDENT]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
+      "lastEducation": "[must be filled if type is TEACHER]"
+    }
+  ]
+}
+```
+
 # UPDATE USER
 
 **URL** : `/api/users/{userId}`
