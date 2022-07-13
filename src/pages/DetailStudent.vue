@@ -7,7 +7,7 @@ const enabled = ref(false)
 </script>
 
 <template>
-  <div class="p-4 text-white h-1/2">
+  <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <h1 class="text-4xl mb-2">Fulan bin fulan</h1>
     <div class="text-xs">Terdaftar sejak 20 Desember 2021</div>
     <div class="green-block w-full rounded-md p-2 my-4">

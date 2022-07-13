@@ -6,7 +6,7 @@ const enabled = ref(false)
 </script>
 
 <template>
-  <div class="p-4 text-white h-1/2">
+  <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="w-full text-sm mb-5">
      
       <div class="relative mb-6">

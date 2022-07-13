@@ -7,7 +7,7 @@ const enabled = ref(false)
 </script>
 
 <template>
-  <div class="p-4 text-white h-1/2">
+  <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <p class="text-md">Assalamu’alaikum</p>
     <h1 class="text-4xl mb-10">Umar bakri</h1>
     <div class="flex text-black mx-auto mb-5">
