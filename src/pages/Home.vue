@@ -8,8 +8,15 @@ const enabled = ref(false)
 
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
-    <p class="text-md">Assalamu’alaikum</p>
-    <h1 class="text-4xl mb-10">Umar bakri</h1>
+    <div class="flex mx-auto mb-5">
+      <div class="w-full">
+        <p class="text-md">Assalamu’alaikum</p>
+        <h1 class="text-4xl mb-10">Umar bakri</h1>
+      </div>
+      <div class="w-full text-right">
+        <a href="#" class="text-right">logout</a>
+      </div>
+    </div>
     <div class="flex text-black mx-auto mb-5">
         <router-link to="/list-student" class="block rounded-md text-center bg-white w-2/5 p-2 mx-2"> 
           Santri
