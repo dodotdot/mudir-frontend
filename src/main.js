@@ -1,20 +1,17 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia';
+
 import './tailwind.css'
 import App from './App.vue'
-import { routes } from './routes.js'
-import { createRouter, createWebHistory } from 'vue-router'
-import { makeServer } from "./api/mockserver"
+import { router } from './routes.js'
+import { fakeBackend } from './helpers'
 
 const app = createApp(App)
-if (import.meta.env.mode === "development") {
-  console.log('devvv')
-  makeServer()
+if (process.env.NODE_ENV === "development") {
+  // setup fake backend
+  fakeBackend();
 }
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})
-
+app.use(createPinia());
 app.use(router)
 app.mount('#app')

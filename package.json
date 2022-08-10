@@ -2,14 +2,19 @@
   "name": "ppatunasmulia",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --host ",
-    "build": "vite build",
+    "dev": "cross-env NODE_ENV=development vite",
+    "build": "cross-env NODE_ENV=production vite build ",
     "serve": "vite preview"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.3.0",
     "axios": "^0.27.2",
+    "cross-env": "^7.0.3",
+    "mockjs": "^1.1.0",
+    "vee-validate": "^4.6.4",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.16"
+    "vue-router": "^4.0.16",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.6.5",
@@ -20,9 +25,10 @@
     "@tailwindcss/typography": "^0.5.2",
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.4.7",
-    "miragejs": "^0.1.45",
+    "pinia": "^2.0.17",
     "prettier-plugin-tailwindcss": "^0.1.11",
     "tailwindcss": "^3.1.4",
-    "vite": "^2.9.13"
+    "vite": "^2.9.13",
+    "vite-plugin-mock": "^2.9.6"
   }
 }

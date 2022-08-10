@@ -1,10 +1,18 @@
 <script setup>
-import ButtonRepo from '@/components/ButtonRepo.vue'
-import { ref, onMounted } from 'vue'
+import { Form, Field } from 'vee-validate';
+import * as Yup from 'yup';
+import { useAuthStore } from '@/store/auth.store';
 
+const schema = Yup.object().shape({
+    username: Yup.string().required('Username is required'),
+    password: Yup.string().required('Password is required')
+});
 
-
-
+async function onSubmit(values) {
+    const authStore = useAuthStore();
+    const { username, password } = values;
+    await authStore.login(username, password);
+}
 </script>
 
 <template>
@@ -21,15 +29,17 @@ import { ref, onMounted } from 'vue'
           <span class="text-sm p-2">Ahlan, selamat datang kembali. Silakan masuk.</span>
         </h2>
         <div class="mt-12 lg:mt-0">
-          <form>
+          <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
             <div class="mb-6">
-              <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required>
+              <Field type="email" name="username" :class="{ 'is-invalid': errors.username }"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required/>
+              <div class="invalid-feedback">{{ errors.username }}</div>
             </div>
             <div class="mb-6">
-              <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="password" required>
+              <Field type="password" name="password"  :class="{ 'is-invalid': errors.password }" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="password" required/>
+              <div class="invalid-feedback">{{ errors.password }}</div>
             </div>
-            <button @click="$router.push('/home')" type="button" class="block w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Masuk</button>
-          </form>
+            <button type="submit" class="block w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" :disabled="isSubmitting">Masuk</button>
+          </Form>
          
         </div>
       </div>
