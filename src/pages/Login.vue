@@ -32,11 +32,11 @@ async function onSubmit(values) {
           <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
             <div class="mb-6">
               <Field type="email" name="username" :class="{ 'is-invalid': errors.username }"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required/>
-              <div class="invalid-feedback">{{ errors.username }}</div>
+              <div class=" text-red-500 text-sm p-2">{{ errors.username }}</div>
             </div>
             <div class="mb-6">
               <Field type="password" name="password"  :class="{ 'is-invalid': errors.password }" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="password" required/>
-              <div class="invalid-feedback">{{ errors.password }}</div>
+              <div class=" text-red-500 text-sm p-2">{{ errors.password }}</div>
             </div>
             <button type="submit" class="block w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" :disabled="isSubmitting">Masuk</button>
           </Form>

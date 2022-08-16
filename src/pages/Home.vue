@@ -12,7 +12,7 @@ const authStore = useAuthStore();
         <h1 class="text-4xl mb-10">Umar bakri</h1>
       </div>
       <div class="w-full text-right">
-        <a @click="authStore.logout()" class="text-right">logout</a>
+        <a @click="authStore.logout()" class="cursor-pointer text-right">logout</a>
       </div>
     </div>
     <div class="flex text-black mx-auto mb-5">
