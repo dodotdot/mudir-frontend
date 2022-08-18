@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore } from '@/store';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
+const baseUrl = `/api/users`;
 
 export const useUsersStore = defineStore({
     id: 'users',
@@ -12,13 +12,13 @@ export const useUsersStore = defineStore({
         user: {}
     }),
     actions: {
-        async register(user) {
-            await fetchWrapper.post(`${baseUrl}/register`, user);
+        async setUser(user) {
+            await fetchWrapper.post(`${baseUrl}`, user);
         },
         async getAll() {
             this.users = { loading: true };
             try {
-                this.users = await fetchWrapper.get(baseUrl);    
+                this.users = await fetchWrapper.get(`${baseUrl}/role/STUDENT`);    
             } catch (error) {
                 this.users = { error };
             }

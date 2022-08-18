@@ -50,7 +50,7 @@ export const router = createRouter({
       component: () => import('./pages/AddStudent.vue')
     },
     {
-      path: '/detail-student/:student_id',
+      path: '/detail-student/:id',
       meta: { title: 'Data Santri', auth: true },
       component: () => import('./pages/DetailStudent.vue')
     },

@@ -3,3 +3,4 @@ dist
 .vscode
 netlify.toml
 .DS_Store
+.env

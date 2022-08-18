@@ -1,15 +1,17 @@
 <script setup>
-import { ref } from 'vue'
-import ButtonRepo from '@/components/ButtonRepo.vue'
-import { Switch } from '@headlessui/vue'
+import { storeToRefs } from 'pinia';
+import { useUsersStore } from '@/store';
 
-const enabled = ref(false)
+const usersStore = useUsersStore();
+const { users } = storeToRefs(usersStore);
+
+usersStore.getAll();
 </script>
 
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
-      <div class=" w-3/4 text-left">Total Santri: <strong>25 santri</strong></div>
+      <div class=" w-3/4 text-left">Total Santri: <strong>{{ users.data && users.data.length }} santri </strong></div>
       <router-link to="/add-student" class="w-1/4 font-bold text-right">+ Tambah</router-link>
     </div>
     <div class="searchbox mb-10">
@@ -34,40 +36,16 @@ const enabled = ref(false)
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="bg-transparent border-b  dark:border-gray-100">
+            <tbody v-if="users.data && users.data.length">
+                <tr v-for="user in users.data" :key="user.id" class="bg-transparent border-b  dark:border-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                     <router-link to="/detail-student/1">   Fulan bin fulan </router-link>
+                     <router-link :to="`/detail-student/${user.id}`">   {{ user.name }}</router-link>
                     </th>
                     <td class="px-6 py-4 text-right">
                         2
                     </td>
                 </tr>
-                <tr class=" border-b  dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        <router-link to="/detail-student/1"> Mas Kus </router-link>
-                    </th>
-                    <td class="px-6 py-4 text-right">
-                        2
-                    </td>
-                </tr>
-                <tr class=" border-b  dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Mas Den
-                    </th>
-                    <td class="px-6 py-4 text-right">
-                        2
-                    </td>
-                </tr>
-                <tr class=" border-b  dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Mas Dodo
-                    </th>
-                    <td class="px-6 py-4 text-right">
-                        2
-                    </td>
-                </tr>
-
+           
             </tbody>
         </table>
     </div>

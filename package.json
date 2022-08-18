@@ -4,12 +4,13 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",
     "build": "cross-env NODE_ENV=production vite build ",
-    "serve": "vite preview"
+    "serve": "cross-env NODE_ENV=production vite preview"
   },
   "dependencies": {
     "@faker-js/faker": "^7.3.0",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
+    "dayjs": "^1.11.5",
     "mockjs": "^1.1.0",
     "vee-validate": "^4.6.4",
     "vue": "^3.2.37",
@@ -29,6 +30,7 @@
     "prettier-plugin-tailwindcss": "^0.1.11",
     "tailwindcss": "^3.1.4",
     "vite": "^2.9.13",
+    "vite-plugin-inspect": "^0.6.0",
     "vite-plugin-mock": "^2.9.6"
   }
 }
