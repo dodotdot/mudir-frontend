@@ -1,15 +1,17 @@
 <script setup>
-import { ref } from 'vue'
-import ButtonRepo from '@/components/ButtonRepo.vue'
-import { Switch } from '@headlessui/vue'
+import { storeToRefs } from 'pinia';
+import { useTeachersStore } from '@/store';
 
-const enabled = ref(false)
+const teachersStore = useTeachersStore();
+const { teachers } = storeToRefs(teachersStore);
+
+teachersStore.getAll();
 </script>
 
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
-      <div class=" w-3/4 text-left">Total Ustadz: <strong>25 Ustads</strong></div>
+      <div class=" w-3/4 text-left">Total Ustadz: <strong>{{ teachers.data && teachers.data.length }} Ustads</strong></div>
       <router-link to="/add-teacher" class="w-1/4 font-bold text-right">+ Tambah</router-link>
     </div>
     <div>
@@ -32,17 +34,11 @@ const enabled = ref(false)
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-transparent border-b  dark:border-gray-100">
+                <tr v-for="teacher in teachers.data" :key="teacher.id" class="bg-transparent border-b  dark:border-gray-100">
                     <td scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Abdurohman
+                     <router-link :to="`/detail-teacher/${teacher.id}`"> {{ teacher.name }}</router-link>
                     </td>
                 </tr>
-                <tr class=" border-b  dark:border-gray-700">
-                    <td scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Mas Kus
-                    </td>
-                </tr>
-               
             </tbody>
         </table>
     </div>

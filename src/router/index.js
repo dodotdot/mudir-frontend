@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore, useAlertStore } from '@/store';
 
-import Login from './pages/Login.vue'
-import Home from './pages/Home.vue'
-import NotFound from './pages/NotFound.vue'
+import Login from '../pages/Login.vue'
+import Home from '../pages/Home.vue'
+import NotFound from '../pages/NotFound.vue'
+import studentRoutes from './student.routes';
+import teacherRoutes from './teacher.routes';
 
 
 export const router = createRouter({
@@ -19,50 +21,27 @@ export const router = createRouter({
       // which is lazy-loaded when the route is visited.
       // component: () => import('./pages/About.vue')
     },
+    { ...studentRoutes },
+    { ...teacherRoutes },
     {
       path: '/list-lesson',
       meta: { title: 'Daftar Pelajaran', auth: true },
-      component: () => import('./pages/ListLesson.vue')
+      component: () => import('../pages/ListLesson.vue')
     },
     {
       path: '/add-lesson',
       meta: { title: 'Input Mata Pelajaran', auth: true },
-      component: () => import('./pages/AddLesson.vue')
+      component: () => import('../pages/AddLesson.vue')
     },
     {
       path: '/list-study',
       meta: { title: 'Daftar Kajian', auth: true },
-      component: () => import('./pages/ListStudy.vue')
+      component: () => import('../pages/ListStudy.vue')
     },
     {
       path: '/add-study',
       meta: { title: 'Input Kajian', auth: true },
-      component: () => import('./pages/AddStudy.vue')
-    },
-    {
-      path: '/list-student',
-      meta: { title: 'Daftar Santri', auth: true },
-      component: () => import('./pages/ListStudent.vue')
-    },
-    {
-      path: '/add-student',
-      meta: { title: 'Tambah Santri', auth: true },
-      component: () => import('./pages/AddStudent.vue')
-    },
-    {
-      path: '/detail-student/:id',
-      meta: { title: 'Data Santri', auth: true },
-      component: () => import('./pages/DetailStudent.vue')
-    },
-    {
-      path: '/list-teacher',
-      meta: { title: 'Daftar Ustadz', auth: true },
-      component: () => import('./pages/ListTeacher.vue')
-    },
-    {
-      path: '/add-teacher',
-      meta: { title: 'Tambah Ustadz', auth: true },
-      component: () => import('./pages/AddTeacher.vue')
+      component: () => import('../pages/AddStudy.vue')
     },
     { path: '/:path(.*)', component: NotFound },
   ]

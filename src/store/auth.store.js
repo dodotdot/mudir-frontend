@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 import { fetchWrapper } from '@/helpers';
-import { router } from '@/routes';
+import { router } from '@/router';
 import { useAlertStore } from '@/store';
 
 const baseUrl = `/api`;

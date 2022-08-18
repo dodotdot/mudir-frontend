@@ -5,30 +5,30 @@ import { useAuthStore } from '@/store';
 
 const baseUrl = `/api/users`;
 
-export const useUsersStore = defineStore({
-    id: 'users',
+export const useTeachersStore = defineStore({
+    id: 'teacher',
     state: () => ({
-        users: {},
-        user: {}
+        teachers: {},
+        teacher: {}
     }),
     actions: {
-        async setUser(user) {
-            await fetchWrapper.post(`${baseUrl}`, user);
+        async setTeacher(teacher) {
+            await fetchWrapper.post(`${baseUrl}`, teacher);
         },
         async getAll() {
-            this.users = { loading: true };
+            this.teachers = { loading: true };
             try {
-                this.users = await fetchWrapper.get(`${baseUrl}/role/STUDENT`);    
+                this.teachers = await fetchWrapper.get(`${baseUrl}/role/TEACHER`);    
             } catch (error) {
-                this.users = { error };
+                this.teachers = { error };
             }
         },
         async getById(id) {
-            this.user = { loading: true };
+            this.teacher = { loading: true };
             try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
+                this.teacher = await fetchWrapper.get(`${baseUrl}/${id}`);
             } catch (error) {
-                this.user = { error };
+                this.teacher = { error };
             }
         },
         async update(id, params) {
@@ -47,12 +47,12 @@ export const useUsersStore = defineStore({
         },
         async delete(id) {
             // add isDeleting prop to user being deleted
-            this.users.find(x => x.id === id).isDeleting = true;
+            this.teachers.find(x => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.users = this.users.filter(x => x.id !== id);
+            this.teachers = this.teachers.filter(x => x.id !== id);
 
             // auto logout if the logged in user deleted their own record
             const authStore = useAuthStore();

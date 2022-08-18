@@ -14,7 +14,10 @@ usersStore.getById(id);
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <h1 class="text-4xl mb-2">{{ user.data && user.data.name }}</h1>
-    <div class="text-xs">Terdaftar sejak {{ $dayjs(user.data && user.data.createdDate).format('DD MMMM YYYY') }}</div>
+    <div class="flex w-full">
+      <div class="text-xs w-1/2">Terdaftar sejak {{ $dayjs(user.data && user.data.createdDate).format('DD MMMM YYYY') }}</div>
+      <router-link :to="`/edit-student/${id}`" class="font-bold text-right w-1/2"> Ubah</router-link>
+    </div>
     <div class="green-block w-full rounded-md p-2 my-4">
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Nama Wali</div>

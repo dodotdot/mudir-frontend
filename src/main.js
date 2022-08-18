@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
     
 import './tailwind.css'
 import App from './App.vue'
-import { router } from './routes.js'
+import { router } from './router'
 // import { fakeBackend } from './helpers'
 
 const app = createApp(App)
