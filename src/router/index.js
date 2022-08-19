@@ -27,16 +27,6 @@ export const router = createRouter({
     { ...teacherRoutes },
     { ...studyRoutes },
     { ...lessonRoutes },
-    {
-      path: '/list-lesson',
-      meta: { title: 'Daftar Pelajaran', auth: true },
-      component: () => import('../pages/ListLesson.vue')
-    },
-    {
-      path: '/add-lesson',
-      meta: { title: 'Input Mata Pelajaran', auth: true },
-      component: () => import('../pages/AddLesson.vue')
-    },
     { path: '/:path(.*)', component: NotFound },
   ]
 })
