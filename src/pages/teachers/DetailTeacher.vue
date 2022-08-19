@@ -16,7 +16,7 @@ teachersStore.getById(id);
     <h1 class="text-4xl mb-2">{{ teacher.data && teacher.data.name }}</h1>
     <div class="flex w-full">
       <div class="text-xs w-1/2">Terdaftar sejak {{ $dayjs(teacher.data && teacher.data.createdDate).format('DD MMMM YYYY') }}</div>
-      <router-link :to="`/edit-student/${id}`" class="font-bold text-right w-1/2"> Ubah</router-link>
+      <router-link :to="`/edit-teacher/${id}`" class="font-bold text-right w-1/2"> Ubah</router-link>
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
         <div class="flex text-sm p-2 text-left">

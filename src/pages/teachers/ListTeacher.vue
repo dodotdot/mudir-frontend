@@ -29,12 +29,18 @@ teachersStore.getAll();
             <thead class="text-xs uppercase dark:bg-gray-400 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
+                        No
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Nama
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="teacher in teachers.data" :key="teacher.id" class="bg-transparent border-b  dark:border-gray-100">
+                <tr v-for="(teacher, idx) in teachers.data" :key="teacher.id" class="bg-transparent border-b  dark:border-gray-100">
+                    <td scope="row" class="p-1 w-1 text-center font-medium dark:text-white whitespace-nowrap">
+                        {{ idx + 1 }}
+                    </td>
                     <td scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
                      <router-link :to="`/detail-teacher/${teacher.id}`"> {{ teacher.name }}</router-link>
                     </td>

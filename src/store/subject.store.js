@@ -63,7 +63,7 @@ export const useUsersStore = defineStore({
             if (id === authStore.user.id) {
                 // update local storage
                 const subj = { ...authStore.user, ...params };
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('usersession', JSON.stringify(user));
 
                 // update auth subj in pinia state
                 authStore.subj = user;
