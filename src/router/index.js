@@ -6,6 +6,8 @@ import Home from '../pages/Home.vue'
 import NotFound from '../pages/NotFound.vue'
 import studentRoutes from './student.routes';
 import teacherRoutes from './teacher.routes';
+import studyRoutes from './study.routes';
+import lessonRoutes from './lesson.routes';
 
 
 export const router = createRouter({
@@ -23,6 +25,8 @@ export const router = createRouter({
     },
     { ...studentRoutes },
     { ...teacherRoutes },
+    { ...studyRoutes },
+    { ...lessonRoutes },
     {
       path: '/list-lesson',
       meta: { title: 'Daftar Pelajaran', auth: true },
@@ -32,16 +36,6 @@ export const router = createRouter({
       path: '/add-lesson',
       meta: { title: 'Input Mata Pelajaran', auth: true },
       component: () => import('../pages/AddLesson.vue')
-    },
-    {
-      path: '/list-study',
-      meta: { title: 'Daftar Kajian', auth: true },
-      component: () => import('../pages/ListStudy.vue')
-    },
-    {
-      path: '/add-study',
-      meta: { title: 'Input Kajian', auth: true },
-      component: () => import('../pages/AddStudy.vue')
     },
     { path: '/:path(.*)', component: NotFound },
   ]

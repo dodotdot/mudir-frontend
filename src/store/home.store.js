@@ -6,24 +6,33 @@ const baseUrl = `/api`;
 export const useHomeStore = defineStore({
     id: 'homes',
     state: () => ({
-        homes: {},
-        home: {}
+        users: {},
+        subjects: {},
+        user: {}
     }),
     actions: {
         async getCountUsers() {
-            this.homes = { loading: true };
+            this.users = { loading: true };
             try {
-                this.homes = await fetchWrapper.get(`${baseUrl}/users/count`);    
+                this.users = await fetchWrapper.get(`${baseUrl}/users/count`);    
             } catch (error) {
-                this.homes = { error };
+                this.users = { error };
+            }
+        },
+        async getCountSubjects() {
+            this.subjects = { loading: true };
+            try {
+                this.subjects = await fetchWrapper.get(`${baseUrl}/subjects/count`);    
+            } catch (error) {
+                this.subjects = { error };
             }
         },
         async getUserById(id) {
-            this.home = { loading: true };
+            this.user = { loading: true };
             try {
-                this.home = await fetchWrapper.get(`${baseUrl}/users/${id}`);
+                this.user = await fetchWrapper.get(`${baseUrl}/users/${id}`);
             } catch (error) {
-                this.home = { error };
+                this.user = { error };
             }
         }
     }
