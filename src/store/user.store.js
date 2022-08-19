@@ -31,6 +31,14 @@ export const useUsersStore = defineStore({
                 this.user = { error };
             }
         },
+        async getByName(name) {
+            this.user = { loading: true };
+            try {
+                this.user = await fetchWrapper.get(`${baseUrl}/${name}`);
+            } catch (error) {
+                this.user = { error };
+            }
+        },
         async update(id, params) {
             await fetchWrapper.put(`${baseUrl}`, params);
 

@@ -9,11 +9,11 @@ export const useSubjectsStore = defineStore({
     id: 'subjects',
     state: () => ({
         subjects: {},
-        subj: {}
+        subject: {}
     }),
     actions: {
-        async setSubject(subj) {
-            await fetchWrapper.post(`${baseUrl}`, subj);
+        async setSubject(subject) {
+            await fetchWrapper.post(`${baseUrl}`, subject);
         },
         async getSubjectStudy() {
             this.subjects = { loading: true };
@@ -32,27 +32,27 @@ export const useSubjectsStore = defineStore({
             }
         },
         async getById(id) {
-            this.subj= { loading: true };
+            this.subject= { loading: true };
             try {
-                this.subj= await fetchWrapper.get(`${baseUrl}/${id}`);
+                this.subject= await fetchWrapper.get(`${baseUrl}/${id}`);
             } catch (error) {
-                this.subj = { error };
+                this.subject = { error };
             }
         },
-        async getByName(id) {
-            this.subj= { loading: true };
+        async getByName(name) {
+            this.subject= { loading: true };
             try {
-                this.subj= await fetchWrapper.get(`${baseUrl}/name/${id}`);
+                this.subject= await fetchWrapper.get(`${baseUrl}/name/${name}`);
             } catch (error) {
-                this.subj = { error };
+                this.subject = { error };
             }
         },
         async getCountSubject(id) {
-            this.subj= { loading: true };
+            this.subject= { loading: true };
             try {
-                this.subj= await fetchWrapper.get(`${baseUrl}/count`);
+                this.subject= await fetchWrapper.get(`${baseUrl}/count`);
             } catch (error) {
-                this.subj = { error };
+                this.subject = { error };
             }
         },
         async update(id, params) {
@@ -66,7 +66,7 @@ export const useSubjectsStore = defineStore({
                 localStorage.setItem('usersession', JSON.stringify(subject));
 
                 // update auth subj in pinia state
-                authStore.subj = subject;
+                authStore.subject = subject;
             }
         },
         async delete(id) {
