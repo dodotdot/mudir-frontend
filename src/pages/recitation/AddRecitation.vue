@@ -71,7 +71,7 @@ defineExpose({
                 <div class="p-2 text-md">Surat</div>
                 <Field name="surat" as="select" class="block px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-200 bg-transparent rounded-full border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-200 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-gray-300 peer">
                     <option value="" disabled>Pilih Surat</option>
-                    <option v-for="(surat, idx) in surah" :key="idx" :value="surat.name" :selected="value && value.includes(surat.name)">{{ surat.name }}</option>
+                    <option v-for="(surat, idx) in surah" :key="idx" :value="surat.title" :selected="value && value.includes(surat.title)">{{ `${surat.title} (${surat.titleAr})` }}</option>
                 </Field>
                 <label class=" text-red-500 text-sm p-2">{{ errors.surat }}</label>
             </div>

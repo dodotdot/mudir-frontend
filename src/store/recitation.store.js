@@ -31,6 +31,14 @@ export const useRecitationStore = defineStore({
                 this.recite = { error };
             }
         },
+        async getRecitationByMethods(method) {
+            this.recitation= { loading: true };
+            try {
+                this.recitation= await fetchWrapper.get(`${baseUrl}/method/${method}`);
+            } catch (error) {
+                this.recitation = { error };
+            }
+        },
         async getCountProgress(id) {
             this.subject= { loading: true };
             try {

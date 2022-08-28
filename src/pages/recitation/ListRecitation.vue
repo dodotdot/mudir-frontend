@@ -1,15 +1,22 @@
 <script setup>
-import { ref } from 'vue'
+import { watch, ref } from 'vue'
 import { storeToRefs } from 'pinia';
-import { useUsersStore } from '@/store';
+import { useRecitationStore } from '@/store';
 
-const usersStore = useUsersStore();
-const { users } = storeToRefs(usersStore);
+const tab = ref('SABAQ');
+const currentTab = async (tabNumber) => {
+    return tab.value = tabNumber
+}
 
-usersStore.getAll();
+const recitationStore = useRecitationStore();
+const {recitation} = storeToRefs(recitationStore)
 
-const tab = ref(1);
-const currentTab = (tabNumber) => (tab.value = tabNumber);
+watch(tab, (currentValue, oldValue) => {
+  recitationStore.getRecitationByMethods(currentValue)
+});
+
+recitationStore.getRecitationByMethods(tab.value)
+
 defineExpose({
   tab,
   currentTab
@@ -21,29 +28,30 @@ defineExpose({
   <div class="w-auto mx-auto text-center text-white text-xl p-4">
     <ul class="flex flex-wrap-reverse -mb-px">
         <li>
-            <div @click="currentTab(1)" :class="{'active border-gray-500 font-bold':tab ===1}" class="inline-block p-4 rounded-t-lg border-b-2">Sabaq</div>
+            <div @click="currentTab('SABAQ')" :class="{'active border-gray-500 font-bold':tab ==='SABAQ'}" class="inline-block p-4 rounded-t-lg border-b-2">Sabaq</div>
         </li>
         <li>
-            <div @click="currentTab(2)" :class="{'active border-gray-500 font-bold':tab ===2}" class="inline-block p-4 rounded-t-lg border-b-2">Manzil</div>
+            <div @click="currentTab('MANZIL')" :class="{'active border-gray-500 font-bold':tab ==='MANZIL'}" class="inline-block p-4 rounded-t-lg border-b-2">Manzil</div>
         </li>
         <li>
-            <div @click="currentTab(3)" :class="{'active border-gray-500 font-bold':tab ===3}" class="inline-block p-4 rounded-t-lg border-b-2">Sabaqi</div>
+            <div @click="currentTab('SABAQI')" :class="{'active border-gray-500 font-bold':tab ==='SABAQI'}" class="inline-block p-4 rounded-t-lg border-b-2">Sabaqi</div>
         </li>
     </ul>
   </div>
   <div class="p-4 w-full text-white">
-    <div  v-if="tab === 1">
+    <div  v-if="tab === 'SABAQ'">
       <div>Bada Subuh, 05:15 - 06:10</div>
       <p>Setiap Santri Akan menyetorkan Hafalan Baru Kepada Musyrif Halaqoh Masing-Masing.</p>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-white text-sm text-left dark:text-gray-400">
-          <tbody v-if="users.data && users.data.length">
-              <tr v-for="user in users.data" :key="user.id" class="bg-transparent border-b  dark:border-gray-100">
+          <tbody v-if="recitation.data && recitation.data.length">
+              <tr v-for="recite in recitation.data" :key="recite.id" class="bg-transparent border-b  dark:border-gray-100">
                   <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                    <router-link :to="`/add-recitation/${user.id}/SABAQ`">   {{ user.name }}</router-link>
+                    <router-link :to="`/add-recitation/${recite.userId}/SABAQ`">   {{ recite.name }}</router-link>
                   </th>
                   <td class="px-6 py-4 text-right">
-                      <button class="block w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Progress</button>
+                      <button v-if="!recite.surat" class="block w-full p-2 rounded-md bg-gray-300 text-black">Progress</button>
+                      <button v-if="recite.surat" class="block w-full p-2 rounded-md bg-black text-white">Updated</button>
                   </td>
               </tr>
           
@@ -51,7 +59,7 @@ defineExpose({
       </table>
     </div>
     </div>
-    <div  v-if="tab === 2">
+    <div  v-if="tab === 'MANZIL'">
       <div>Dhuha, 07:30 - 08:20</div>
       <p>Setiap Santri Akan Murojaah kepada pasangan masing-masing yang sudah ditentukan.</p>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -66,13 +74,14 @@ defineExpose({
                   </th>
               </tr>
           </thead>
-          <tbody v-if="users.data && users.data.length">
-              <tr v-for="user in users.data" :key="user.id" class="bg-transparent border-b  dark:border-gray-100">
+          <tbody v-if="recitation.data && recitation.data.length">
+              <tr v-for="recite in recitation.data" :key="recite.id" class="bg-transparent border-b  dark:border-gray-100">
                   <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                    <router-link :to="`/add-recitation/${user.id}/MANZIL`">   {{ user.name }}</router-link>
+                    <router-link :to="`/add-recitation/${recite.userId}/MANZIL`">   {{ recite.name }}</router-link>
                   </th>
                   <td class="px-6 py-4 text-right">
-                    <button class="block w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Progress</button>
+                    <button v-if="!recite.surat" class="block w-full p-2 rounded-md bg-gray-300 text-black">Progress</button>
+                    <button v-if="recite.surat" class="block w-full p-2 rounded-md bg-black text-white">Updated</button>
                   </td>
               </tr>
           
@@ -80,7 +89,7 @@ defineExpose({
       </table>
     </div>
     </div>
-    <div  v-if="tab === 3">
+    <div  v-if="tab === 'SABAQI'">
       <div>Bada Dzuhur, 12:25 - 12:55</div>
       <p>Setiap Santri Akan Murojaah Hafalan Baru Kepada Musyrif Halaqoh Masing-Masing.</p>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -95,13 +104,14 @@ defineExpose({
                   </th>
               </tr>
           </thead>
-          <tbody v-if="users.data && users.data.length">
-              <tr v-for="user in users.data" :key="user.id" class="bg-transparent border-b  dark:border-gray-100">
+          <tbody v-if="recitation.data && recitation.data.length">
+              <tr v-for="recite in recitation.data" :key="recite.id" class="bg-transparent border-b  dark:border-gray-100">
                   <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                    <router-link :to="`/add-recitation/${user.id}/SABAQI`">   {{ user.name }}</router-link>
+                    <router-link :to="`/add-recitation/${recite.userId}/SABAQI`">   {{ recite.name }}</router-link>
                   </th>
                   <td class="px-6 py-4 text-right">
-                      <button class="block w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Progress</button>
+                    <button v-if="!recite.surat" class="block w-full p-2 rounded-md bg-gray-300 text-black">Progress</button>
+                    <button v-if="recite.surat" class="block w-full p-2 rounded-md bg-black text-white">Updated</button>
                   </td>
               </tr>
           
