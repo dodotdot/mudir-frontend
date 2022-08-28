@@ -6,6 +6,9 @@ const subjectsStore = useSubjectsStore();
 const { subjects } = storeToRefs(subjectsStore);
 
 subjectsStore.getSubjectLesson();
+async function deleteList(v) {
+  console.log('delete ',v)
+}
 </script>
 
 
@@ -22,6 +25,10 @@ subjectsStore.getSubjectLesson();
           <div class="w-1/4  text-right text-xs">{{ subj.duration }} Jam</div>
         </div>
         <p class="text-xs p-2">{{ subj.book }} karya {{ subj.author }}</p>
+        <div v-if=" user && user.data && user.data.role == 'ADMIN'" class="w-full flex text-right p-2 font-bold text-xs"> 
+          <div class="w-3/4"></div>
+          <div class="w-1/4 float-right " @click="deleteList(subj.id)">hapus</div>
+        </div>
     </div>
   </div>
 </template>

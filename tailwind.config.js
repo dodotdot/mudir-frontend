@@ -10,6 +10,9 @@ module.exports = {
       },
     },
   },
+  corePlugins: {
+    float: true,
+  },
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),

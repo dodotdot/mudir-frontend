@@ -8,6 +8,7 @@ import studentRoutes from './student.routes';
 import teacherRoutes from './teacher.routes';
 import studyRoutes from './study.routes';
 import lessonRoutes from './lesson.routes';
+import recitationRoutes from './recitation.routes';
 
 
 export const router = createRouter({
@@ -27,6 +28,7 @@ export const router = createRouter({
     { ...teacherRoutes },
     { ...studyRoutes },
     { ...lessonRoutes },
+    { ...recitationRoutes},
     { path: '/:path(.*)', component: NotFound },
   ]
 })

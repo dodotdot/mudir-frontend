@@ -1,0 +1,458 @@
+[
+    {
+      "name": "al-Fatihah",
+      "pageGreen": 1
+    },
+    {
+      "name": "al-Baqarah",
+      "pageGreen": 2
+    },
+    {
+      "name": "al-Imran",
+      "pageGreen": 50
+    },
+    {
+      "name": "an-Nisa",
+      "pageGreen": 77
+    },
+    {
+      "name": "al-Maidah",
+      "pageGreen": 106
+    },
+    {
+      "name": "al-Anam",
+      "pageGreen": 128
+    },
+    {
+      "name": "al-Araf",
+      "pageGreen": 151
+    },
+    {
+      "name": "al-Anfal",
+      "pageGreen": 177
+    },
+    {
+      "name": "at-Taubah",
+      "pageGreen": 187
+    },
+    {
+      "name": "Yunus",
+      "pageGreen": 208
+    },
+    {
+      "name": "Hud",
+      "pageGreen": 221
+    },
+    {
+      "name": "Yusuf",
+      "pageGreen": 235
+    },
+    {
+      "name": "ar-Rad",
+      "pageGreen": 249
+    },
+    {
+      "name": "Ibrahim",
+      "pageGreen": 255
+    },
+    {
+      "name": "al-hijr",
+      "pageGreen": 262
+    },
+    {
+      "name": "an-Nahl",
+      "pageGreen": 267
+    },
+    {
+      "name": "al-Isra",
+      "pageGreen": 282
+    },
+    {
+      "name": "al-Kahf",
+      "pageGreen": 293
+    },
+    {
+      "name": "Maryam",
+      "pageGreen": 305
+    },
+    {
+      "name": "Ta-Ha",
+      "pageGreen": 312
+    },
+    {
+      "name": "al-Anbiya",
+      "pageGreen": 322
+    },
+    {
+      "name": "al-hajj",
+      "pageGreen": 332
+    },
+    {
+      "name": "al-Muminun",
+      "pageGreen": 342
+    },
+    {
+      "name": "an-Nur",
+      "pageGreen": 350
+    },
+    {
+      "name": "al-Furqan",
+      "pageGreen": 359
+    },
+    {
+      "name": "ash-Shuara",
+      "pageGreen": 367
+    },
+    {
+      "name": "an-Naml",
+      "pageGreen": 377
+    },
+    {
+      "name": "al-Qasas",
+      "pageGreen": 385
+    },
+    {
+      "name": "al-Ankabut",
+      "pageGreen": 396
+    },
+    {
+      "name": "ar-Rum",
+      "pageGreen": 404
+    },
+    {
+      "name": "Luqman",
+      "pageGreen": 411
+    },
+    {
+      "name": "as-Sajdah",
+      "pageGreen": 415
+    },
+    {
+      "name": "al-Ahzab",
+      "pageGreen": 418
+    },
+    {
+      "name": "Saba",
+      "pageGreen": 428
+    },
+    {
+      "name": "FaTir",
+      "pageGreen": 434
+    },
+    {
+      "name": "Ya-Sin",
+      "pageGreen": 440
+    },
+    {
+      "name": "as-saffat",
+      "pageGreen": 446
+    },
+    {
+      "name": "sad",
+      "pageGreen": 453
+    },
+    {
+      "name": "az-Zumar",
+      "pageGreen": 458
+    },
+    {
+      "name": "Ghafir",
+      "pageGreen": 467
+    },
+    {
+      "name": "Fussilat",
+      "pageGreen": 477
+    },
+    {
+      "name": "ash-Shura",
+      "pageGreen": 483
+    },
+    {
+      "name": "az-Zukhruf",
+      "pageGreen": 489
+    },
+    {
+      "name": "ad-Dukhan",
+      "pageGreen": 496
+    },
+    {
+      "name": "al-Jathiyah",
+      "pageGreen": 499
+    },
+    {
+      "name": "al-Ahqaf",
+      "pageGreen": 502
+    },
+    {
+      "name": "Muhammad",
+      "pageGreen": 507
+    },
+    {
+      "name": "al-Fath",
+      "pageGreen": 511
+    },
+    {
+      "name": "al-hujurat",
+      "pageGreen": 515
+    },
+    {
+      "name": "Qaf",
+      "pageGreen": 518
+    },
+    {
+      "name": "adh-Dhariyat",
+      "pageGreen": 520
+    },
+    {
+      "name": "at-Tur",
+      "pageGreen": 523
+    },
+    {
+      "name": "an-Najm",
+      "pageGreen": 526
+    },
+    {
+      "name": "al-Qamar",
+      "pageGreen": 528
+    },
+    {
+      "name": "ar-Rahman",
+      "pageGreen": 531
+    },
+    {
+      "name": "al-Waqiah",
+      "pageGreen": 534
+    },
+    {
+      "name": "al-Hadid",
+      "pageGreen": 537
+    },
+    {
+      "name": "al-Mujadilah",
+      "pageGreen": 542
+    },
+    {
+      "name": "al-hashr",
+      "pageGreen": 545
+    },
+    {
+      "name": "al-Mumtahanah",
+      "pageGreen": 549
+    },
+    {
+      "name": "as-Saff",
+      "pageGreen": 551
+    },
+    {
+      "name": "al-Jumuah",
+      "pageGreen": 553
+    },
+    {
+      "name": "al-Munafiqun",
+      "pageGreen": 554
+    },
+    {
+      "name": "at-Taghabun",
+      "pageGreen": 556
+    },
+    {
+      "name": "at-Talaq",
+      "pageGreen": 558
+    },
+    {
+      "name": "at-Tahrim",
+      "pageGreen": 560
+    },
+    {
+      "name": "al-Mulk",
+      "pageGreen": 562
+    },
+    {
+      "name": "al-Qalam",
+      "pageGreen": 564
+    },
+    {
+      "name": "al-Haqqah",
+      "pageGreen": 566
+    },
+    {
+      "name": "al-Maarij",
+      "pageGreen": 568
+    },
+    {
+      "name": "Nuh",
+      "pageGreen": 570
+    },
+    {
+      "name": "al-Jinn",
+      "pageGreen": 572
+    },
+    {
+      "name": "al-Muzzammil",
+      "pageGreen": 574
+    },
+    {
+      "name": "al-Muddaththir",
+      "pageGreen": 575
+    },
+    {
+      "name": "al-Qiyamah",
+      "pageGreen": 577
+    },
+    {
+      "name": "al-Insan",
+      "pageGreen": 578
+    },
+    {
+      "name": "al-Mursalat",
+      "pageGreen": 580
+    },
+    {
+      "name": "an-Naba",
+      "pageGreen": 582
+    },
+    {
+      "name": "an-Naziat",
+      "pageGreen": 583
+    },
+    {
+      "name": "Abasa",
+      "pageGreen": 585
+    },
+    {
+      "name": "at-Takwir",
+      "pageGreen": 586
+    },
+    {
+      "name": "al-InfiTar",
+      "pageGreen": 587
+    },
+    {
+      "name": "al-MuTaffifin",
+      "pageGreen": 587
+    },
+    {
+      "name": "al-Inshiqaq",
+      "pageGreen": 589
+    },
+    {
+      "name": "al-Buruj",
+      "pageGreen": 590
+    },
+    {
+      "name": "at-Tariq",
+      "pageGreen": 591
+    },
+    {
+      "name": "al-Ala",
+      "pageGreen": 591
+    },
+    {
+      "name": "al-Ghashiyah",
+      "pageGreen": 592
+    },
+    {
+      "name": "al-Fajr",
+      "pageGreen": 593
+    },
+    {
+      "name": "al-Balad",
+      "pageGreen": 594
+    },
+    {
+      "name": "ash-Shams",
+      "pageGreen": 595
+    },
+    {
+      "name": "al-Layl",
+      "pageGreen": 595
+    },
+    {
+      "name": "ad-Duha",
+      "pageGreen": 596
+    },
+    {
+      "name": "ash-Sharh",
+      "pageGreen": 596
+    },
+    {
+      "name": "at-Tin",
+      "pageGreen": 597
+    },
+    {
+      "name": "al-Alaq",
+      "pageGreen": 597
+    },
+    {
+      "name": "al-Qadr",
+      "pageGreen": 598
+    },
+    {
+      "name": "al-Bayyinah",
+      "pageGreen": 598
+    },
+    {
+      "name": "az-Zalzalah",
+      "pageGreen": 599
+    },
+    {
+      "name": "al-Adiyat",
+      "pageGreen": 599
+    },
+    {
+      "name": "al-Qariah",
+      "pageGreen": 600
+    },
+    {
+      "name": "at-Takathur",
+      "pageGreen": 600
+    },
+    {
+      "name": "al-Asr",
+      "pageGreen": 601
+    },
+    {
+      "name": "al-Humazah",
+      "pageGreen": 601
+    },
+    {
+      "name": "al-Fil",
+      "pageGreen": 601
+    },
+    {
+      "name": "Quraysh",
+      "pageGreen": 602
+    },
+    {
+      "name": "al-Maun",
+      "pageGreen": 602
+    },
+    {
+      "name": "al-Kawthar",
+      "pageGreen": 602
+    },
+    {
+      "name": "al-Kafirun",
+      "pageGreen": 603
+    },
+    {
+      "name": "an-Nasr",
+      "pageGreen": 603
+    },
+    {
+      "name": "al-Masad",
+      "pageGreen": 603
+    },
+    {
+      "name": "al-Ikhlas",
+      "pageGreen": 604
+    },
+    {
+      "name": "al-Falaq",
+      "pageGreen": 604
+    },
+    {
+      "name": "an-Nas",
+      "pageGreen": 604
+    }
+  ]

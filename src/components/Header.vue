@@ -9,8 +9,8 @@
             <a @click="$router.go(-1)"><ArrowLeftIcon class="text-white"></ArrowLeftIcon></a>
          </div>
          <div class="w-full">
-            <!-- <img class="w-24 mx-auto" src="@/assets/images/logo.png"> -->
-           <div class=" pt-4 text-center text-white"> {{ $route.meta.title }} </div>
+            <img v-if="$route.path=='/home'" class="w-24 mx-auto" src="@/assets/images/logo.png">
+            <div v-if="$route.path!=='/home'" class=" pt-4 text-center text-white"> {{ $route.meta.title }} </div>
          </div>
          <div class="w-8 pt-4">
             <router-link to="/home"><HomeIcon class="text-white"></HomeIcon> </router-link>     

@@ -23,6 +23,11 @@ export default {
             path: '/detail-student/:id',
             meta: { title: 'Data Santri', auth: true },
             component: DetailStudent
+          },
+          {
+            path: '/report-student/:id',
+            meta: { title: 'Data Santri', auth: false },
+            component: DetailStudent
           }
     ]
 };
