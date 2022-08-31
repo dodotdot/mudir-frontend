@@ -64,32 +64,34 @@ const listMenu = ref([
           <strong class="text-2xl">{{  subjects && subjects.data && subjects.data.filter(a => a.type == 'KAJIAN')[0].total }}</strong>
         </router-link>
     </div>
-    <div v-for="(list, idx) in listMenu" :key="idx"  class="green-block w-full p-2 my-4">
-        <router-link :to="list.link" class="flex w-full text-sm p-2">
-          <div class="w-3/4 text-left uppercase">{{ list.title }}</div>
-        </router-link>       
-    </div>
-    <div class="green-block w-full p-2 my-4">
-      <table class="w-full text-left border-collapse">
-        <tbody>
-          <tr class="border-b border-white p-4">
-            <td class="p-4">Sabaq</td>
-            <td class="p-4">05:15 - 06:10</td>
-          </tr>
-          <tr class="border-b border-white p-4">
-            <td class="p-4">Manzil</td>
-            <td class="p-4">07:30 - 08:20</td>
-          </tr>
-          <tr class="border-b border-white p-4">
-            <td class="p-4">Sabaqi</td>
-            <td class="p-4">12:25 - 12:55</td>
-          </tr>
-          <tr class="border-b border-white p-4">
-            <td class="p-4">Muqoror</td>
-            <td class="p-4">Ba’da Maghrib</td>
-          </tr>
-        </tbody>
-      </table>
+    <div v-if=" user && user.data && user.data.role !== 'ADMIN'">
+      <div v-for="(list, idx) in listMenu" :key="idx"  class="green-block w-full p-2 my-4" >
+          <router-link :to="list.link" class="flex w-full text-sm p-2">
+            <div class="w-3/4 text-left uppercase">{{ list.title }}</div>
+          </router-link>       
+      </div>
+      <div class="green-block w-full p-2 my-4">
+        <table class="w-full text-left border-collapse">
+          <tbody>
+            <tr class="border-b border-white p-4">
+              <td class="p-4">Sabaq</td>
+              <td class="p-4">05:15 - 06:10</td>
+            </tr>
+            <tr class="border-b border-white p-4">
+              <td class="p-4">Manzil</td>
+              <td class="p-4">07:30 - 08:20</td>
+            </tr>
+            <tr class="border-b border-white p-4">
+              <td class="p-4">Sabaqi</td>
+              <td class="p-4">12:25 - 12:55</td>
+            </tr>
+            <tr class="border-b border-white p-4">
+              <td class="p-4">Muqoror</td>
+              <td class="p-4">Ba’da Maghrib</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>

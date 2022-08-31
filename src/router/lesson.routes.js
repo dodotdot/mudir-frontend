@@ -21,7 +21,7 @@ export default {
       },
       {
         path: '/detail-lesson/:id',
-        meta: { title: 'Data Pelajaran', auth: true },
+        meta: { title: 'Detail Pelajaran', auth: true },
         component: DetailLesson
       }
     ]

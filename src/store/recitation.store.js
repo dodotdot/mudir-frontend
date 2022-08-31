@@ -13,7 +13,7 @@ export const useRecitationStore = defineStore({
     }),
     actions: {
         async setRecitation(subject) {
-            await fetchWrapper.post(`${baseUrl}`, subject);
+            await fetchWrapper.put(`${baseUrl}`, subject);
         },
         async getRecitationById(id) {
             this.recite= { loading: true };
@@ -23,20 +23,20 @@ export const useRecitationStore = defineStore({
                 this.recite = { error };
             }
         },
+        async getRecitationByMethods(method) { 
+            this.recitation= { loading: true };
+            try {
+                this.recitation= await fetchWrapper.get(`${baseUrl}/method/${method}`);
+            } catch (error) {
+                this.recitation = { error };
+            }
+        },
         async getRecitationByUseridMethod(id, method) {
             this.recite= { loading: true };
             try {
                 this.recite= await fetchWrapper.get(`${baseUrl}/user/${id}/method/${method}`);
             } catch (error) {
                 this.recite = { error };
-            }
-        },
-        async getRecitationByMethods(method) {
-            this.recitation= { loading: true };
-            try {
-                this.recitation= await fetchWrapper.get(`${baseUrl}/method/${method}`);
-            } catch (error) {
-                this.recitation = { error };
             }
         },
         async getCountProgress(id) {

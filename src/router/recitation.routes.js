@@ -10,7 +10,7 @@ export default {
         component: ListRecitation
       },
       {
-        path: '/add-recitation/:id/:type',
+        path: '/add-recitation/:id/:userid/:type',
         meta: { title: 'Progress santri', auth: true },
         component: AddRecitation
       }

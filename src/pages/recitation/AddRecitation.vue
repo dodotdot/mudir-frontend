@@ -12,15 +12,16 @@ const usersStore = useUsersStore();
 const recitationStore = useRecitationStore();
 const alertStore = useAlertStore();
 const route = useRoute();
-const userid = route.params.id;
+const userid = route.params.userid;
+const id = route.params.id;
 const recitationType = route.params.type;
 
 let user = null;
-let recitation = null;
+let recite = null;
 // get user data
 if (userid) {
     ({ user } = storeToRefs(usersStore));
-    ({ recitation } = storeToRefs(recitationStore));
+    ({ recite } = storeToRefs(recitationStore));
     usersStore.getById(userid);
     recitationStore.getRecitationById(userid);
 }
@@ -35,6 +36,7 @@ const schema = Yup.object().shape({
 async function onSubmit(values) {
     try {
         let message;
+        console.log(values)
         await recitationStore.setRecitation(values);
         message = 'Progress';
         await router.push('/list-recitation');
@@ -54,15 +56,18 @@ defineExpose({
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="text-2xl">{{ user && user.data && user.data.name }}</div>
-    <div class="">hafalan terakhir: </div>
+    <div class="inline-block">hafalan terakhir: 
+        <div v-if="recite.data.surat" > {{ `${recite && recite.data && recite.data.surat}, ayat ${recite && recite.data && recite.data.ayat}` }}</div>
+        <div v-if="!recite.data.surat" class="inline-block">  - </div>
+    </div>
     <template v-if="!(user?.loading || user?.error)">
-      <Form @submit="onSubmit" :validation-schema="schema" :initial-values="recitation" v-slot="{ errors, values }">
+      <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, values }">
         <div class="w-full text-sm mb-5 mt-5">
             <div class="relative mb-2">
                 <div class="p-2 text-md">Juz</div>
                 <Field name="juz" as="select" class="block px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-200 bg-transparent rounded-full border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-200 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-gray-300 peer">
                     <option value="" disabled>Pilih juz</option>
-                    <option v-for="(juz, idx) in 30" :key="idx" :value="juz" :selected="value && value.includes(juz)">{{ juz }}</option>
+                    <option v-for="(juz, idx) in 30" :key="idx" :value="juz">{{ juz }}</option>
                 </Field>
                 <label class=" text-red-500 text-sm p-2">{{ errors.juz }}</label>
             </div>
@@ -71,7 +76,7 @@ defineExpose({
                 <div class="p-2 text-md">Surat</div>
                 <Field name="surat" as="select" class="block px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-200 bg-transparent rounded-full border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-200 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-gray-300 peer">
                     <option value="" disabled>Pilih Surat</option>
-                    <option v-for="(surat, idx) in surah" :key="idx" :value="surat.title" :selected="value && value.includes(surat.title)">{{ `${surat.title} (${surat.titleAr})` }}</option>
+                    <option v-for="(surat, idx) in surah" :key="idx" :value="surat.title" >{{ `${surat.title} (${surat.titleAr})` }}</option>
                 </Field>
                 <label class=" text-red-500 text-sm p-2">{{ errors.surat }}</label>
             </div>
@@ -82,6 +87,7 @@ defineExpose({
                 <label class=" text-red-500 text-sm p-2">{{ errors.ayat }}</label>
             </div>
             <Field name="userid" class="hidden" type="number" :value="Number(userid)" @update:modelValue="values.userid = Number(values.userid)" id="userid"/>
+            <Field name="id" class="hidden" type="number" :value="Number(id)" @update:modelValue="values.id = Number(values.id)" id="id"/>
             <Field name="method" type="hidden" :value="recitationType" />
         </div>
         <button class="w-full p-2 rounded-full bg-gray-300 text-black">Submit </button>

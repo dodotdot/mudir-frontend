@@ -12,7 +12,7 @@ subjectsStore.getSubjectStudy();
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
       <div class=" w-3/4 text-left">Kajian: {{ subjects.data && subjects.data.length }}</div>
-      <router-link to="/add-study" class="w-1/4 font-bold text-right">+ Tambah</router-link>
+      <router-link v-if=" user && user.data && user.data.role !== 'ADMIN'" to="/add-study" class="w-1/4 font-bold text-right">+ Tambah</router-link>
 
     </div>
     <div v-for="subj in subjects.data" :key="subj.id"  class="green-block w-full p-2 my-4">

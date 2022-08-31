@@ -1,9 +1,11 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useSubjectsStore } from '@/store';
+import { useUsersStore, useSubjectsStore } from '@/store';
 
 const subjectsStore = useSubjectsStore();
+const usersStore = useUsersStore()
 const { subjects } = storeToRefs(subjectsStore);
+const { user } = storeToRefs(usersStore);
 
 subjectsStore.getSubjectLesson();
 async function deleteList(v) {
@@ -16,10 +18,11 @@ async function deleteList(v) {
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
       <div class=" w-3/4 text-left">Mata Pelajaran ({{ subjects.data && subjects.data.length }})</div>
-      <router-link to="/add-lesson" class="w-1/4 font-bold text-right">+ Tambah</router-link>
+      <router-link v-if=" user && user.data && user.data.role !== 'ADMIN'" to="/add-lesson" class="w-1/4 font-bold text-right">+ Tambah</router-link>
 
     </div>
      <div v-for="subj in subjects.data" :key="subj.id"  class="green-block w-full p-2 my-4">
+      <router-link :to="`/detail-lesson/${subj.id}`">
         <div class="flex w-full text-sm p-2">
           <div class="w-3/4 text-left uppercase">{{ subj.name }}</div>
           <div class="w-1/4  text-right text-xs">{{ subj.duration }} Jam</div>
@@ -29,7 +32,8 @@ async function deleteList(v) {
           <div class="w-3/4"></div>
           <div class="w-1/4 float-right " @click="deleteList(subj.id)">hapus</div>
         </div>
-    </div>
+      </router-link>
+     </div>
   </div>
 </template>
 
