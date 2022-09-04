@@ -1,4 +1,4 @@
-import { Layout, DetailStudent, AddStudent, ListStudent } from '@/pages/students';
+import { Layout, DetailStudent, ReportDetailStudent, AddStudent, ListStudent } from '@/pages/students';
 
 export default {
     path: '/users',
@@ -27,7 +27,7 @@ export default {
           {
             path: '/report-student/:id',
             meta: { title: 'Data Santri', auth: false },
-            component: DetailStudent
+            component: ReportDetailStudent
           }
     ]
 };

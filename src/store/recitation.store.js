@@ -9,11 +9,20 @@ export const useRecitationStore = defineStore({
     id: 'recitation',
     state: () => ({
         recitation: {},
-        recite: {}
+        recite: {},
+        recitereport: {}
     }),
     actions: {
         async setRecitation(subject) {
             await fetchWrapper.put(`${baseUrl}`, subject);
+        },
+        async getRecitationProgress(id) {
+            this.recitation= { loading: true };
+            try {
+                this.recitation= await fetchWrapper.get(`${baseUrl}/user/progress`);
+            } catch (error) {
+                this.recitation = { error };
+            }
         },
         async getRecitationById(id) {
             this.recite= { loading: true };
@@ -21,6 +30,35 @@ export const useRecitationStore = defineStore({
                 this.recite= await fetchWrapper.get(`${baseUrl}/user/${id}/progress`);
             } catch (error) {
                 this.recite = { error };
+            }
+        },
+        // /api/quran-progress/user/:userId/report
+        async getRecitationReportById(userid) {
+            this.recitereport= { loading: true };
+            try {
+                this.recitereport = await fetchWrapper.get(`${baseUrl}/user/${userid}/report`);
+                this.recitereport = this.recitereport.data
+                this.recitereport = this.recitereport.filter(x => x.surat !== undefined)
+            } catch (error) {
+                this.recitereport = { error };
+            }
+        },
+        // /api/quran-progress/user/:userId/progress/report
+        async getRecitationProgressByUserId(userid) {
+            this.recite= { loading: true };
+            try {
+                this.recite= await fetchWrapper.get(`${baseUrl}/user/${userid}/progress/report`);
+            } catch (error) {
+                this.recite = { error };
+            }
+        },
+        // /api/quran-progress/user/:userId/method/count/report
+        async getCountRecitationProgressMethodByUserId(userid) {
+            this.recitation= { loading: true };
+            try {
+                this.recitation= await fetchWrapper.get(`${baseUrl}/user/${userid}/method/count/report`);
+            } catch (error) {
+                this.recitation = { error };
             }
         },
         async getRecitationByMethods(method) { 

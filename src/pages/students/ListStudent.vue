@@ -1,18 +1,21 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useUsersStore } from '@/store';
+import { useRecitationStore, useUsersStore } from '@/store';
 
 const usersStore = useUsersStore();
+const recitationsStore = useRecitationStore();
+const { recitation } = storeToRefs(recitationsStore);
 const { users } = storeToRefs(usersStore);
 
+recitationsStore.getRecitationProgress();
 usersStore.getAll();
 </script>
 
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
-      <div class=" w-3/4 text-left">Total Santri: <strong>{{ users.data && users.data.length }} santri </strong></div>
-      <router-link to="/add-student" class="w-1/4 font-bold text-right">+ Tambah</router-link>
+      <div class=" w-3/4 text-left">Total Santri: <strong>{{ recitation.data && recitation.data.length }} santri </strong></div>
+      <router-link v-if=" users && users.data && users.data.role == 'ADMIN'" to="/add-student" class="w-1/4 font-bold text-right">+ Tambah</router-link>
     </div>
     <div class="searchbox mb-10">
        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
@@ -36,13 +39,13 @@ usersStore.getAll();
                     </th>
                 </tr>
             </thead>
-            <tbody v-if="users.data && users.data.length">
-                <tr v-for="user in users.data" :key="user.id" class="bg-transparent border-b  dark:border-gray-100">
+            <tbody v-if="recitation.data && recitation.data.length">
+                <tr v-for="recit in recitation.data" :key="recit.id" class="bg-transparent border-b  dark:border-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                     <router-link :to="`/detail-student/${user.id}`">   {{ user.name }}</router-link>
+                     <router-link :to="`/detail-student/${recit.userId}`">   {{ recit.name }}</router-link>
                     </th>
                     <td class="px-6 py-4 text-right">
-                        2
+                        {{ recit.total }}
                     </td>
                 </tr>
            

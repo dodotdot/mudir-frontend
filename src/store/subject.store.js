@@ -4,6 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { useAuthStore } from '@/store';
 
 const baseUrl = `/api/subjects`;
+const baseUrlProgress = `/api/subject-progress`;
 
 export const useSubjectsStore = defineStore({
     id: 'subjects',
@@ -14,6 +15,9 @@ export const useSubjectsStore = defineStore({
     actions: {
         async setSubject(subject) {
             await fetchWrapper.post(`${baseUrl}`, subject);
+        },
+        async setSubjectProgress(progress) {
+            await fetchWrapper.put(`${baseUrlProgress}`,progress)
         },
         async getSubjectStudy() {
             this.subjects = { loading: true };
@@ -27,6 +31,14 @@ export const useSubjectsStore = defineStore({
             this.subjects = { loading: true };
             try {
                 this.subjects = await fetchWrapper.get(`${baseUrl}/type/PELAJARAN`);    
+            } catch (error) {
+                this.subjects = { error };
+            }
+        },
+        async getSubjectProgressById(id) {
+            this.subjects= { loading: true };
+            try {
+                this.subjects= await fetchWrapper.get(`${baseUrlProgress}/subject/${id}`);
             } catch (error) {
                 this.subjects = { error };
             }
