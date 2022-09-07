@@ -31,12 +31,28 @@ export const useUsersStore = defineStore({
                 this.user = { error };
             }
         },
+        async getReportById(id) {
+            this.user = { loading: true };
+            try {
+                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
+            } catch (error) {
+                this.user = { error };
+            }
+        },
         async getByName(name) {
             this.user = { loading: true };
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${name}`);
             } catch (error) {
                 this.user = { error };
+            }
+        },
+        async getAllUserByName(name) {
+            this.users = { loading: true };
+            try {
+                this.users = await fetchWrapper.get(`${baseUrl}/name/${name}`);
+            } catch (error) {
+                this.users = { error };
             }
         },
         async update(id, params) {

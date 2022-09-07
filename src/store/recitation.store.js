@@ -52,6 +52,15 @@ export const useRecitationStore = defineStore({
                 this.recite = { error };
             }
         },
+        // /api/quran-progress/user/name/:nama/progress
+        async getRecitationProgressByUserName(name) {
+            this.recitation= { loading: true };
+            try {
+                this.recitation= await fetchWrapper.get(`${baseUrl}/user/name/${name}/progress`);
+            } catch (error) {
+                this.recitation = { error };
+            }
+        },
         // /api/quran-progress/user/:userId/method/count/report
         async getCountRecitationProgressMethodByUserId(userid) {
             this.recitation= { loading: true };

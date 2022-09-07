@@ -11,7 +11,7 @@ const userid = route.params.id;
 const {recite, recitation, recitereport} = storeToRefs(recitationStore);
 const { user } = storeToRefs(usersStore);
 
-usersStore.getById(userid);
+usersStore.getReportById(userid);
 recitationStore.getRecitationProgressByUserId(userid)
 recitationStore.getCountRecitationProgressMethodByUserId(userid)
 recitationStore.getRecitationReportById(userid)
