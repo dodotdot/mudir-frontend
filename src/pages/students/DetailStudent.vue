@@ -24,7 +24,8 @@ recitationStore.getRecitationReportById(userid)
 
 const onClick = (param) => {
     if(param.src === 'wa') {
-      const words = `https://wa.me/0811111111?text=Bismillah.%20Alhamdulillah%20${param.name}%20sudah%20menghafal%20${param.total}%20surat.%20Saat%20ini%20sedang%20menghafal%20surat%20${param.surat}%20Selengkapnya%20klik%20di%20sini.%20http://ppatunasmulia.com/report-student/${userid}%0A`
+      const phone = '08568482288';
+      const words = `https://wa.me/${phone}?text=Bismillah.%20Alhamdulillah%20${param.name}%20sudah%20menghafal%20${param.total}%20surat.%20Saat%20ini%20sedang%20menghafal%20surat%20${param.surat}%20Selengkapnya%20klik%20di%20sini.%20http://ppatunasmulia.com/report-student/${userid}%0A`
       window.open(words, "_blank" );
     } else {
       navigator.clipboard.writeText(`http://ppatunasmulia.com/report-student/${userid}`)
