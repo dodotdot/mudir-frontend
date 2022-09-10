@@ -1,8 +1,13 @@
 <script setup>
+import {ref} from 'vue';
+import { ChatIcon, ClipboardIcon } from '@heroicons/vue/solid'
 import { useUsersStore, useRecitationStore } from '@/store';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 
+const name = ref(null)
+// const totalSurat = ref(recite && recite.data && recite.data.totalSurat)
+// const surat = ref(recite && recite.data && recite.data.surat)
 const usersStore = useUsersStore();
 const recitationStore = useRecitationStore();
 const route = useRoute();
@@ -12,9 +17,19 @@ const {recite, recitation, recitereport} = storeToRefs(recitationStore);
 const { user } = storeToRefs(usersStore);
 
 usersStore.getById(userid);
+
 recitationStore.getRecitationProgressByUserId(userid)
 recitationStore.getCountRecitationProgressMethodByUserId(userid)
 recitationStore.getRecitationReportById(userid)
+
+const onClick = (param) => {
+    if(param.src === 'wa') {
+      const words = `https://wa.me/0811111111?text=Bismillah.%20Alhamdulillah%20${param.name}%20sudah%20menghafal%20${param.total}%20surat.%20Saat%20ini%20sedang%20menghafal%20surat%20${param.surat}%20Selengkapnya%20klik%20di%20sini.%20http://ppatunasmulia.com/report-student/${userid}%0A`
+      window.open(words, "_blank" );
+    } else {
+      navigator.clipboard.writeText(`http://ppatunasmulia.com/report-student/${userid}`)
+    }
+}
 
 </script>
 
@@ -70,6 +85,16 @@ recitationStore.getRecitationReportById(userid)
         </table>
     </div>
     </div>
+    <button v-if="user.data && user.data.name" @click="onClick({
+      src: 'wa',
+      name: user && user.data && user.data.name || null,
+      total: recite.data.totalSurat || null,
+      surat: recite.data.surat || null,
+    })" class="w-full p-2 rounded-full bg-gray-300 text-black mb-2">
+    <ChatIcon class=" text-black w-5 inline-block mr-2"></ChatIcon>Share to whatsapp</button>
+
+    <button @click="onClick({src:'report'})" class="w-full p-2 rounded-full bg-gray-300 text-black">
+    <ClipboardIcon class=" text-black w-5 inline-block mr-2"></ClipboardIcon>Copy link report</button>
   </div>
 </template>
 

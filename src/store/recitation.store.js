@@ -8,6 +8,7 @@ const baseUrl = `/api/quran-progress`;
 export const useRecitationStore = defineStore({
     id: 'recitation',
     state: () => ({
+        userRecitate: {},
         recitation: {},
         recite: {},
         recitereport: {}
@@ -30,6 +31,15 @@ export const useRecitationStore = defineStore({
                 this.recite= await fetchWrapper.get(`${baseUrl}/user/${id}/progress`);
             } catch (error) {
                 this.recite = { error };
+            }
+        },
+         // /api/quran-progress/users/:userId/report
+         async getDetailUserById(userid) {
+            this.userRecitate= { loading: true };
+            try {
+                this.userRecitate = await fetchWrapper.get(`/api/users/${userid}/report`);
+            } catch (error) {
+                this.userRecitate = { error };
             }
         },
         // /api/quran-progress/user/:userId/report

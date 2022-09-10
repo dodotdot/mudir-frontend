@@ -1,17 +1,15 @@
 <script setup>
-import { useUsersStore, useRecitationStore } from '@/store';
+import { useRecitationStore } from '@/store';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 
-const usersStore = useUsersStore();
 const recitationStore = useRecitationStore();
 const route = useRoute();
 const userid = route.params.id;
 
-const {recite, recitation, recitereport} = storeToRefs(recitationStore);
-const { user } = storeToRefs(usersStore);
+const {userRecitate, recite, recitation, recitereport} = storeToRefs(recitationStore);
 
-usersStore.getReportById(userid);
+recitationStore.getDetailUserById(userid);
 recitationStore.getRecitationProgressByUserId(userid)
 recitationStore.getCountRecitationProgressMethodByUserId(userid)
 recitationStore.getRecitationReportById(userid)
@@ -20,23 +18,22 @@ recitationStore.getRecitationReportById(userid)
 
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
-    <h1 class="text-4xl mb-2">{{ user.data && user.data.name }}</h1>
+    <h1 class="text-4xl mb-2">{{ userRecitate.data && userRecitate.data.name }}</h1>
     <div class="flex w-full">
-      <div class="text-xs w-1/2">Terdaftar sejak {{ $dayjs(user.data && user.data.createdDate).format('DD MMMM YYYY') }}</div>
-      <router-link v-if=" user && user.data && user.data.role == 'ADMIN'" :to="`/edit-student/${userid}`" class="font-bold text-right w-1/2"> Ubah</router-link>
+      <div class="text-xs w-1/2">Terdaftar sejak {{ $dayjs(userRecitate.data && userRecitate.data.createdDate).format('DD MMMM YYYY') }}</div>
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Nama Wali</div>
-          <div class="w-1/2 font-bold">{{ user.data && user.data.guardian }}</div>
+          <div class="w-1/2 font-bold">{{ userRecitate.data && userRecitate.data.guardian }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Asal</div>
-          <div class="w-1/2 font-bold">{{ user.data && user.data.city }}</div>
+          <div class="w-1/2 font-bold">{{ userRecitate.data && userRecitate.data.city }}</div>
         </div>
          <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Kontak Wali</div>
-          <div class="w-1/2 font-bold">{{ user.data && user.data.guardianPhone }}</div>
+          <div class="w-1/2 font-bold">{{ userRecitate.data && userRecitate.data.guardianPhone }}</div>
         </div>
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
