@@ -31,6 +31,14 @@ export const useTeachersStore = defineStore({
                 this.teacher = { error };
             }
         },
+        async getAllUserByNameTeacher(name) {
+            this.teachers = { loading: true };
+            try {
+                this.teachers = await fetchWrapper.get(`${baseUrl}/name/${name}/role/TEACHER`);
+            } catch (error) {
+                this.teachers = { error };
+            }
+        },
         async update(id, params) {
             await fetchWrapper.put(`${baseUrl}`, params);
 
