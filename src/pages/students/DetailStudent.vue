@@ -86,7 +86,7 @@ const onClick = (param) => {
         </table>
     </div>
     </div>
-    <button v-if="user.data && user.data.name" @click="onClick({
+    <button v-if="false" @click="onClick({
       src: 'wa',
       name: user && user.data && user.data.name || null,
       total: recite.data.totalSurat || null,
