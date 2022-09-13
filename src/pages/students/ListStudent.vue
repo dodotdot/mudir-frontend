@@ -3,19 +3,21 @@ import {ref, watch} from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRecitationStore, useUsersStore } from '@/store';
 
+const userdata = JSON.parse(localStorage.getItem('usersession'))
 const usersStore = useUsersStore();
 const recitationsStore = useRecitationStore();
 const { recitation } = storeToRefs(recitationsStore);
-const { users } = storeToRefs(usersStore);
-
+const { user } = storeToRefs(usersStore);
 let searchTerm = ref('')
 
+usersStore.getById(userdata.userid);
 recitationsStore.getRecitationProgress();
 
 watch(searchTerm, (current, old) => {
     if(current !== '') {
         recitationsStore.getRecitationProgressByUserName(current)
     } else {
+        usersStore.getById(userdata.userid);
         recitationsStore.getRecitationProgress();
     }
 })
@@ -26,7 +28,7 @@ watch(searchTerm, (current, old) => {
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
       <div class=" w-3/4 text-left">Total Santri: <strong>{{ recitation.data && recitation.data.length }} santri </strong></div>
-      <router-link v-if=" users && users.data && users.data.role == 'ADMIN'" to="/add-student" class="w-1/4 font-bold text-right">+ Tambah</router-link>
+      <router-link v-if=" user && user.data && user.data.role == 'ADMIN'" to="/add-student" class="w-1/4 font-bold text-right">+ Tambah</router-link>
     </div>
     <div class="searchbox mb-10">
        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>

@@ -28,7 +28,8 @@ const onClick = (param) => {
       const words = `https://api.whatsapp.com/send/?phone=${phone}?text=Bismillah.%20Alhamdulillah%20${param.name}%20sudah%20menghafal%20${param.total}%20surat.%20Saat%20ini%20sedang%20menghafal%20surat%20${param.surat}%20Selengkapnya%20klik%20di%20sini.%20http://ppatunasmulia.com/report-student/${userid}%0A`
       window.open(words, "_blank" );
     } else {
-      navigator.clipboard.writeText(`http://ppatunasmulia.com/report-student/${userid}`)
+      window.open(`http://ppatunasmulia.com/report-student/${userid}`, "_blank" );
+      // navigator.clipboard.writeText(`http://ppatunasmulia.com/report-student/${userid}`)
     }
 }
 
@@ -95,7 +96,7 @@ const onClick = (param) => {
     <ChatIcon class=" text-black w-5 inline-block mr-2"></ChatIcon>Share to whatsapp</button>
 
     <button @click="onClick({src:'report'})" class="w-full p-2 rounded-full bg-gray-300 text-black">
-    <ClipboardIcon class=" text-black w-5 inline-block mr-2"></ClipboardIcon>Copy link report</button>
+    <ClipboardIcon class=" text-black w-5 inline-block mr-2"></ClipboardIcon>Link report</button>
   </div>
 </template>
 

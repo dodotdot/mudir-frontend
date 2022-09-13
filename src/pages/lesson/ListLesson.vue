@@ -2,13 +2,16 @@
 import { storeToRefs } from 'pinia';
 import { useUsersStore, useSubjectsStore } from '@/store';
 
+const userdata = JSON.parse(localStorage.getItem('usersession'))
 const subjectsStore = useSubjectsStore();
-const usersStore = useUsersStore()
+const usersStore = useUsersStore();
 const { subjects } = storeToRefs(subjectsStore);
 const { user } = storeToRefs(usersStore);
 
+usersStore.getById(userdata.userid);
 subjectsStore.getSubjectLesson();
-async function deleteList(v) {
+
+async function onClick(v) {
   console.log('delete ',v)
 }
 </script>
@@ -18,7 +21,7 @@ async function deleteList(v) {
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
       <div class=" w-3/4 text-left">Mata Pelajaran ({{ subjects.data && subjects.data.length }})</div>
-      <router-link v-if=" user && user.data && user.data.role !== 'ADMIN'" to="/add-lesson" class="w-1/4 font-bold text-right">+ Tambah</router-link>
+      <router-link v-if=" user && user.data && user.data.role == 'ADMIN'" to="/add-lesson" class="w-1/4 font-bold text-right">+ Tambah</router-link>
 
     </div>
      <div v-for="subj in subjects.data" :key="subj.id"  class="green-block w-full p-2 my-4">
@@ -30,7 +33,7 @@ async function deleteList(v) {
         <p class="text-xs p-2">{{ subj.book }} karya {{ subj.author }}</p>
         <div v-if=" user && user.data && user.data.role == 'ADMIN'" class="w-full flex text-right p-2 font-bold text-xs"> 
           <div class="w-3/4"></div>
-          <div class="w-1/4 float-right " @click="deleteList(subj.id)">hapus</div>
+          <div class="w-1/4 float-right " @click="onClick(subj.id)">hapus</div>
         </div>
       </router-link>
      </div>
