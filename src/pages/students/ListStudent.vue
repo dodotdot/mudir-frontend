@@ -1,24 +1,25 @@
 <script setup>
 import {ref, watch} from 'vue';
 import { storeToRefs } from 'pinia';
-import { useRecitationStore, useUsersStore } from '@/store';
+import { useUsersStore } from '@/store';
 
 const userdata = JSON.parse(localStorage.getItem('usersession'))
 const usersStore = useUsersStore();
-const recitationsStore = useRecitationStore();
-const { recitation } = storeToRefs(recitationsStore);
-const { user } = storeToRefs(usersStore);
+// const recitationsStore = useRecitationStore();
+// const { recitation } = storeToRefs(recitationsStore);
+const { user, users } = storeToRefs(usersStore);
 let searchTerm = ref('')
 
 usersStore.getById(userdata.userid);
-recitationsStore.getRecitationProgress();
+usersStore.getAll();
+// recitationsStore.getRecitationProgress();
 
 watch(searchTerm, (current, old) => {
     if(current !== '') {
-        recitationsStore.getRecitationProgressByUserName(current)
+        usersStore.getAllUserByName(current)
     } else {
         usersStore.getById(userdata.userid);
-        recitationsStore.getRecitationProgress();
+        usersStore.getAll();
     }
 })
 
@@ -27,7 +28,7 @@ watch(searchTerm, (current, old) => {
 <template>
   <div class="p-4 text-white h-1/2 max-w-7xl mx-auto">
     <div class="flex w-full text-sm mb-5">
-      <div class=" w-3/4 text-left">Total Santri: <strong>{{ recitation.data && recitation.data.length }} santri </strong></div>
+      <div class=" w-3/4 text-left">Total Santri: <strong>{{ users.data && users.data.length }} santri </strong></div>
       <router-link v-if=" user && user.data && user.data.role == 'ADMIN'" to="/add-student" class="w-1/4 font-bold text-right">+ Tambah</router-link>
     </div>
     <div class="searchbox mb-10">
@@ -47,19 +48,13 @@ watch(searchTerm, (current, old) => {
                     <th scope="col" class="px-6 py-3">
                         Nama
                     </th>
-                    <th scope="col" class="px-6 py-3 text-right">
-                        Hafalan
-                    </th>
                 </tr>
             </thead>
-            <tbody v-if="recitation.data && recitation.data.length">
-                <tr v-for="recit in recitation.data" :key="recit.id" class="bg-transparent border-b  dark:border-gray-100">
+            <tbody v-if="users.data && users.data.length">
+                <tr v-for="usr in users.data" :key="usr.id" class="bg-transparent border-b  dark:border-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                     <router-link :to="`/detail-student/${recit.userId}`">   {{ recit.name }}</router-link>
+                     <router-link :to="`/detail-student/${usr.id}`">   {{ usr.name }}</router-link>
                     </th>
-                    <td class="px-6 py-4 text-right">
-                        {{ recit.total }}
-                    </td>
                 </tr>
            
             </tbody>

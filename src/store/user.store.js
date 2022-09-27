@@ -70,19 +70,20 @@ export const useUsersStore = defineStore({
             }
         },
         async delete(id) {
+            console.log('deletes')
             // add isDeleting prop to user being deleted
-            this.users.find(x => x.id === id).isDeleting = true;
+            // this.users.find(x => x.id === id).markForDelete = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.users = this.users.filter(x => x.id !== id);
 
-            // auto logout if the logged in user deleted their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                authStore.logout();
-            }
+            // // auto logout if the logged in user deleted their own record
+            // const authStore = useAuthStore();
+            // if (id === authStore.user.id) {
+            //     authStore.logout();
+            // }
         }
     }
 });

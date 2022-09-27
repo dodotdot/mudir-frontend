@@ -1,14 +1,28 @@
 <script setup>
-import { useTeachersStore } from '@/store';
+import { useUsersStore, useTeachersStore } from '@/store';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 
 const teachersStore = useTeachersStore();
+const usersStore = useUsersStore();
 const route = useRoute();
 const id = route.params.id;
 
 const { teacher } = storeToRefs(teachersStore);
+const { user } = storeToRefs(usersStore);
+
 teachersStore.getById(id);
+
+const onClick = (param) => {
+
+    if(param.src === 'delete') {
+      if (confirm('Informasi ustadz tidak akan dapat dicari jika statusnya non-aktif. Anda ingin menon-aktifkan ustadz?')) {
+        // delete it!
+        usersStore.delete(id)
+        window.location.href = '/list-teacher';
+      } 
+    }
+}
 </script>
 
 <template>
@@ -19,6 +33,10 @@ teachersStore.getById(id);
       <router-link :to="`/edit-teacher/${id}`" class="font-bold text-right w-1/2"> Ubah</router-link>
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
+        <div class="flex text-sm p-2 text-left">
+          <div class="w-1/3">Alamat</div>
+          <div class="w-1/2 font-bold">{{ teacher.data && teacher.data.address }}</div>
+        </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Pendidikan</div>
           <div class="w-1/2 font-bold">{{ teacher.data && teacher.data.lastEducation }}</div>
@@ -62,6 +80,8 @@ teachersStore.getById(id);
         </table>
     </div>
     </div>
+    <div class="text-center mt-4 p-4" @click="onClick({src:'delete'})">[ Non-aktifkan ]</div>
+
   </div>
 </template>
 

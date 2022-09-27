@@ -28,6 +28,10 @@ recitationStore.getRecitationReportById(userid)
           <div class="w-1/2 font-bold">{{ userRecitate.data && userRecitate.data.guardian }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
+          <div class="w-1/3">Alamat</div>
+          <div class="w-1/2 font-bold">{{ userRecitate.data && userRecitate.data.address }}</div>
+        </div>
+        <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Asal</div>
           <div class="w-1/2 font-bold">{{ userRecitate.data && userRecitate.data.city }}</div>
         </div>
