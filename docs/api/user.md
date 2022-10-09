@@ -292,6 +292,43 @@
 }
 ```
 
+# GET USER BY name and role
+
+**URL** : `/api/users/name/{name}/role/{role}`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "code": 200,
+  "message": "ok",
+  "status": "success",
+  "data": [
+    {
+      "id" : "asdnasdqwjenkjnk2enk",
+      "name": "[user name]",
+      "username": "[valid username address]",
+      "password": "[password in plain text, can be empty if user type is STUDENT]",
+      "guardian": "[parents or wali name, must be filled if type is STUDENT]",
+      "userPhone": "[plain text]",
+      "guardianPhone": "[plain text], must be filled if type is STUDENT",
+      "birthDate": "[DD-MM-YYYY, must be filled if type is STUDENT]",
+      "city": "[plain text, must be filled if type is STUDENT]",
+      "role": "[TEACHER, STUDENT, ADMIN]",
+      "lastEducation": "[must be filled if type is TEACHER]"
+    }
+  ]
+}
+```
+
 # UPDATE USER
 
 **URL** : `/api/users/{userId}`
