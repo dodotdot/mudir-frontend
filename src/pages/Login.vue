@@ -17,12 +17,13 @@ async function onSubmit(values) {
 
 <template>
   <div class="login relative">
-    <div class="w-full">
-          <img class="w-24 mx-auto" src="@/assets/images/logo-black.png">
-    </div>
+   
     <div
       class=" mx-auto max-w-sm min-h-screen px-4 py-12 sm:px-6 items-center justify-between"
     >
+    <div class="w-full">
+          <img class="w-24 mx-auto" src="@/assets/images/logo-black.png">
+    </div>
       <div class="bg-black w-auto absolute bottom-8 p-4 opacity-75 rounded-lg text-center">
         <h2
         class="leading-9 tracking-tight text-white text-lg"
