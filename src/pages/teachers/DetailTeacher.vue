@@ -34,6 +34,10 @@ const onClick = (param) => {
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
         <div class="flex text-sm p-2 text-left">
+          <div class="w-1/3">Tempat/Tgl lahir</div>
+          <div class="w-1/2 font-bold"> - </div>
+        </div>
+        <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Alamat</div>
           <div class="w-1/2 font-bold">{{ teacher.data && teacher.data.address }}</div>
         </div>
@@ -46,39 +50,42 @@ const onClick = (param) => {
           <div class="w-1/2 font-bold">{{ teacher.data && teacher.data.userPhone }}</div>
         </div>
     </div>
-    <h1 class="text-lg">Jadwal</h1>
-    <div class="green-block w-full rounded-md p-2 my-4">
-       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-white text-sm text-left dark:text-gray-400">
-            <tbody>
-                <tr class="bg-transparent border-b  dark:border-gray-100">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Sabaq
-                    </th>
-                    <td class="px-6 py-4 text-right">
-                        10:08:36 - 24 Des. 20
-                    </td>
-                </tr>
-                <tr class="bg-transparent border-b  dark:border-gray-100">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                       Manzil
-                    </th>
-                    <td class="px-6 py-4 text-right">
-                        10:08:36 - 24 Des. 20
-                    </td>
-                </tr>
-                <tr class="bg-transparent border-b  dark:border-gray-100">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                        Sabaqi
-                    </th>
-                    <td class="px-6 py-4 text-right">
-                        10:08:36 - 24 Des. 20
-                    </td>
-                </tr>
+    <div class="schedule" v-if="false">
 
-            </tbody>
-        </table>
-    </div>
+        <h1 class="text-lg">Jadwal</h1>
+        <div class="green-block w-full rounded-md p-2 my-4">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-white text-sm text-left dark:text-gray-400">
+                <tbody>
+                    <tr class="bg-transparent border-b  dark:border-gray-100">
+                        <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
+                            Sabaq
+                        </th>
+                        <td class="px-6 py-4 text-right">
+                            10:08:36 - 24 Des. 20
+                        </td>
+                    </tr>
+                    <tr class="bg-transparent border-b  dark:border-gray-100">
+                        <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
+                        Manzil
+                        </th>
+                        <td class="px-6 py-4 text-right">
+                            10:08:36 - 24 Des. 20
+                        </td>
+                    </tr>
+                    <tr class="bg-transparent border-b  dark:border-gray-100">
+                        <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
+                            Sabaqi
+                        </th>
+                        <td class="px-6 py-4 text-right">
+                            10:08:36 - 24 Des. 20
+                        </td>
+                    </tr>
+    
+                </tbody>
+            </table>
+        </div>
+        </div>
     </div>
     <div class="text-center mt-4 p-4" @click="onClick({src:'delete'})">[ Non-aktifkan ]</div>
 

@@ -17,6 +17,9 @@ async function onSubmit(values) {
 
 <template>
   <div class="login relative">
+    <div class="w-full">
+          <img class="w-24 mx-auto" src="@/assets/images/logo-black.png">
+    </div>
     <div
       class=" mx-auto max-w-sm min-h-screen px-4 py-12 sm:px-6 items-center justify-between"
     >

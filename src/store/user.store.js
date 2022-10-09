@@ -9,7 +9,8 @@ export const useUsersStore = defineStore({
     id: 'users',
     state: () => ({
         users: {},
-        user: {}
+        user: {},
+        currentUser: {}
     }),
     actions: {
         async setUser(user) {
@@ -29,6 +30,14 @@ export const useUsersStore = defineStore({
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
             } catch (error) {
                 this.user = { error };
+            }
+        },
+        async getCurrentUserById(id) {
+            this.currentUser = { loading: true };
+            try {
+                this.currentUser = await fetchWrapper.get(`${baseUrl}/${id}`);
+            } catch (error) {
+                this.currentUser = { error };
             }
         },
         async getReportById(id) {

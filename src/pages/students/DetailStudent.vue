@@ -13,10 +13,12 @@ const usersStore = useUsersStore();
 const recitationStore = useRecitationStore();
 const route = useRoute();
 const userid = route.params.id;
+const currentUserData = JSON.parse(localStorage.getItem('usersession'))
 
 const {recite, recitation, recitereport} = storeToRefs(recitationStore);
-const { user } = storeToRefs(usersStore);
+const { user, currentUser } = storeToRefs(usersStore);
 
+usersStore.getCurrentUserById(currentUserData.userid);
 usersStore.getById(userid);
 
 recitationStore.getRecitationProgressByUserId(userid)
@@ -50,12 +52,16 @@ const onClick = (param) => {
     <h1 class="text-4xl mb-2">{{ user.data && user.data.name }}</h1>
     <div class="flex w-full">
       <div class="text-xs w-1/2">Terdaftar sejak {{ $dayjs(user.data && user.data.createdDate).format('DD MMMM YYYY') }}</div>
-      <router-link v-if=" user && user.data && user.data.role == 'ADMIN'" :to="`/edit-student/${userid}`" class="font-bold text-right w-1/2"> Ubah</router-link>
+      <router-link v-if=" currentUser && currentUser.data && currentUser.data.role == 'ADMIN'" :to="`/edit-student/${userid}`" class="font-bold text-right w-1/2"> Ubah</router-link>
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Nama Wali</div>
           <div class="w-1/2 font-bold">{{ user.data && user.data.guardian }}</div>
+        </div>
+        <div class="flex text-sm p-2 text-left">
+          <div class="w-1/3">Tempat, Tgl Lahir</div>
+          <div class="w-1/2 font-bold"> </div>
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Alamat</div>
