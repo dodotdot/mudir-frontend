@@ -60,15 +60,23 @@ const onClick = (param) => {
           <div class="w-1/2 font-bold">{{ user.data && user.data.guardian }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
+          <div class="w-1/3">Email</div>
+          <div class="w-1/2 font-bold">{{ user.data && user.data.username }}</div>
+        </div>
+        <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Tempat, Tgl Lahir</div>
-          <div class="w-1/2 font-bold"> </div>
+          <div class="w-1/2 font-bold">{{  `${user.data && user.data.birthPlace || ''}, ${user.data && user.data.userBirthDate || ''} ` }} </div>
+        </div>
+        <div class="flex text-sm p-2 text-left">
+          <div class="w-1/3">Telepon</div>
+          <div class="w-1/2 font-bold">{{ user.data && user.data.userPhone }} </div>
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Alamat</div>
           <div class="w-1/2 font-bold">{{ user.data && user.data.address }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
-          <div class="w-1/3">Asal</div>
+          <div class="w-1/3">Asal kota</div>
           <div class="w-1/2 font-bold">{{ user.data && user.data.city }}</div>
         </div>
          <div class="flex text-sm p-2 text-left">
