@@ -38,13 +38,11 @@ async function onSubmit(values) {
         if (subject) {
             await subjectsStore.update(id, values)
             message = 'Kajian updated';
-            await router.push('/list-study');
         } else {
             await subjectsStore.setSubject(values);
             message = 'Kajian added';
-            await router.push('/list-teacher');
         }
-        
+        await router.push('/list-study');
         alertStore.success(message);
     } catch (error) {
         alertStore.error(error);
