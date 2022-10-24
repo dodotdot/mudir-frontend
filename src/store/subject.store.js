@@ -68,33 +68,28 @@ export const useSubjectsStore = defineStore({
             }
         },
         async update(id, params) {
-            await fetchWrapper.put(`${baseUrl}/${id}`, params);
+            await fetchWrapper.put(`${baseUrl}`, params);
 
             // update stored subj if the logged in subj updated their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                // update local storage
-                const subj = { ...authStore.user, ...params };
-                localStorage.setItem('usersession', JSON.stringify(subject));
+            // const authStore = useAuthStore();
+            // if (id === authStore.user.id) {
+            //     // update local storage
+            //     const subj = { ...authStore.user, ...params };
+            //     localStorage.setItem('usersession', JSON.stringify(subject));
 
-                // update auth subj in pinia state
-                authStore.subject = subject;
-            }
+            //     // update auth subj in pinia state
+            //     authStore.subject = subject;
+            // }
         },
         async delete(id) {
             // add isDeleting prop to subj being deleted
-            this.subjects.find(x => x.id === id).isDeleting = true;
+            // this.subjects.find(x => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove subj from list after deleted
             this.subjects = this.subjects.filter(x => x.id !== id);
 
-            // auto logout if the logged in subj deleted their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                authStore.logout();
-            }
         }
     }
 });

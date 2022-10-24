@@ -1,6 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useUsersStore, useSubjectsStore } from '@/store';
+import { router } from '@/router';
 
 const userdata = JSON.parse(localStorage.getItem('usersession'))
 const subjectsStore = useSubjectsStore();
@@ -10,6 +11,20 @@ const { user } = storeToRefs(usersStore)
 
 usersStore.getById(userdata.userid);
 subjectsStore.getSubjectStudy();
+
+
+const onClick = (param, id) => {
+  if(param == 'edit') {
+    router.push(`/edit-study/${id}`)
+  }
+  if(param == 'remove') {
+    if (confirm('Informasi Kajian tidak akan dapat dicari jika statusnya non-aktif. Anda ingin menon-aktifkan kajian?')) {
+      // delete it!
+      subjectsStore.delete(id)
+      window.location.href = '/list-study';
+    }
+  }
+}
 </script>
 
 <template>
@@ -20,11 +35,17 @@ subjectsStore.getSubjectStudy();
 
     </div>
     <div v-for="subj in subjects.data" :key="subj.id"  class="green-block w-full p-2 my-4">
-        <div class="flex w-full text-sm p-2">
-          <div class="w-3/4 text-left uppercase">{{ subj.name }}</div>
-          <div class="w-1/4  text-right text-xs">{{ subj.duration }} Jam</div>
+        <router-link :to="`/detail-study/${subj.id}`">
+          <div class="flex w-full text-sm p-2">
+            <div class="w-3/4 text-left uppercase">{{ subj.name }}</div>
+            <div class="w-1/4  text-right text-xs">{{ subj.duration }} Jam</div>
+          </div>
+          <p class="text-xs p-2">{{ subj.book }} karya {{ subj.author }}</p>
+        </router-link>
+        <div v-if=" user && user.data && user.data.role == 'ADMIN'" class="w-full flex text-right p-2 font-bold text-xs"> 
+          <div class="w-3/4"  @click="onClick('edit',subj.id)"> ubah</div>
+          <div class="w-1/4 float-right " @click="onClick('remove',subj.id)">hapus</div>
         </div>
-        <p class="text-xs p-2">{{ subj.book }} karya {{ subj.author }}</p>
     </div>
 
   </div>

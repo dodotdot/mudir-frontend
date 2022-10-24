@@ -51,10 +51,13 @@ watch(searchTerm, (current, old) => {
                 </tr>
             </thead>
             <tbody v-if="users.data && users.data.length">
-                <tr v-for="usr in users.data" :key="usr.id" class="bg-transparent border-b  dark:border-gray-100">
-                    <th scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
-                     <router-link :to="`/detail-student/${usr.id}`">   {{ usr.name }}</router-link>
-                    </th>
+                <tr v-for="(usr, idx) in users.data" :key="usr.id" class="bg-transparent border-b  dark:border-gray-100">
+                    <td scope="row" class="p-1 w-1 text-center font-medium dark:text-white whitespace-nowrap">
+                        {{ idx + 1 }}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium dark:text-white whitespace-nowrap">
+                     <router-link :to="`/detail-student/${usr.id}`"> {{ usr.name }}</router-link>
+                    </td>
                 </tr>
            
             </tbody>

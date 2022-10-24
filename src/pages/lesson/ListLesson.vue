@@ -1,6 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useUsersStore, useSubjectsStore } from '@/store';
+import { router } from '@/router';
 
 const userdata = JSON.parse(localStorage.getItem('usersession'))
 const subjectsStore = useSubjectsStore();
@@ -11,8 +12,17 @@ const { user } = storeToRefs(usersStore);
 usersStore.getById(userdata.userid);
 subjectsStore.getSubjectLesson();
 
-async function onClick(v) {
-  console.log('delete ',v)
+const onClick = (param, id) => {
+  if(param == 'edit') {
+    router.push(`/edit-lesson/${id}`)
+  }
+  if(param == 'remove') {
+    if (confirm('Informasi Pelajaran tidak akan dapat dicari jika statusnya non-aktif. Anda ingin menon-aktifkan pelajaran?')) {
+      // delete it!
+      subjectsStore.delete(id)
+      window.location.href = '/list-lesson';
+    }
+  }
 }
 </script>
 
@@ -31,11 +41,11 @@ async function onClick(v) {
           <div class="w-1/4  text-right text-xs">{{ subj.duration }} Jam</div>
         </div>
         <p class="text-xs p-2">{{ subj.book }} karya {{ subj.author }}</p>
-        <div v-if=" user && user.data && user.data.role == 'ADMIN'" class="w-full flex text-right p-2 font-bold text-xs"> 
-          <div class="w-3/4"></div>
-          <div class="w-1/4 float-right " @click="onClick(subj.id)">hapus</div>
-        </div>
       </router-link>
+      <div v-if=" user && user.data && user.data.role == 'ADMIN'" class="w-full flex text-right p-2 font-bold text-xs"> 
+        <div class="w-3/4"  @click="onClick('edit',subj.id)"> ubah</div>
+        <div class="w-1/4 float-right " @click="onClick('remove',subj.id)">hapus</div>
+      </div>
      </div>
   </div>
 </template>
