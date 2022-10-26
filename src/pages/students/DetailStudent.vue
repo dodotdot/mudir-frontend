@@ -60,7 +60,7 @@ const onClick = (param) => {
           <div class="w-1/2 font-bold">{{ user.data && user.data.guardian }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
-          <div class="w-1/3">Email</div>
+          <div class="w-1/3">Email/Username</div>
           <div class="w-1/2 font-bold">{{ user.data && user.data.username }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
@@ -73,7 +73,7 @@ const onClick = (param) => {
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Alamat</div>
-          <div class="w-1/2 font-bold">{{ user.data && user.data.address }}</div>
+          <div class="w-1/2 font-bold">{{ user.data && user.data.address || '-' }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Asal kota</div>

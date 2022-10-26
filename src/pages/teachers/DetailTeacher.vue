@@ -34,12 +34,12 @@ const onClick = (param) => {
     </div>
     <div class="green-block w-full rounded-md p-2 my-4">
         <div class="flex text-sm p-2 text-left">
-          <div class="w-1/3">Email</div>
+          <div class="w-1/3">Email/Username</div>
           <div class="w-1/2 font-bold">{{ teacher.data && teacher.data.username }}</div>
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Tempat/Tgl lahir</div>
-          <div class="w-1/2 font-bold">{{ `${teacher.data && teacher.data.birthPlace && '-'}, ${teacher.data && teacher.data.userBirthDate && '-'} ` }} </div>
+          <div class="w-1/2 font-bold">{{ `${teacher.data && teacher.data.birthPlace || '-'}, ${teacher.data && teacher.data.userBirthDate || '-'} ` }} </div>
         </div>
         <div class="flex text-sm p-2 text-left">
           <div class="w-1/3">Alamat</div>
